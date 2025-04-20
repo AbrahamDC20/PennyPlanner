@@ -15,9 +15,9 @@ $transactions = getTransactions($userId, $limit, $offset); // Pasa el userId a l
 ?>
 
 <?php include 'header.php'; ?>
-<main style="margin: 80px auto; max-width: 800px; padding: 20px;">
+<main style="margin-top: 0;"> <!-- Ajustar margen superior -->
     <div class="section">
-        <h2 style="text-align: center;"><?= t('transactions') ?></h2>
+        <h2><?= t('transactions') ?></h2>
         <form method="POST" action="../routes/add_transaction.php" class="styled-form"> <!-- Corregir acción -->
             <div class="form-group">
                 <label for="description"><?= t('description') ?>:</label>

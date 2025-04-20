@@ -51,10 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php include 'header.php'; ?>
-<main style="margin-top: 80px; overflow-y: auto; max-height: calc(100vh - 80px);">
+<main style="margin-top: 0;"> <!-- Ajustar margen superior -->
     <div class="register-container">
         <h2 style="text-align: center;"><?= t('register') ?></h2>
-        <form method="POST" id="register-form" class="form-two-columns" style="max-width: 800px; margin: 0 auto;"> <!-- Centrar y ajustar ancho -->
+        <form method="POST" id="register-form" class="form-two-columns" style="max-width: 800px; margin: 0 auto;">
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
             <div>
                 <label for="first_name"><?= t('name') ?>:</label>

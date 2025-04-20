@@ -16,7 +16,7 @@ $adminId = $_SESSION['user']['id'];
 $friends = getFriends($adminId); // Obtener amigos del administrador
 ?>
 <?php include 'header.php'; ?>
-<main style="margin: 80px auto; max-width: 1200px; padding: 0 20px;"> <!-- Márgenes laterales -->
+<main style="margin-top: 0;"> <!-- Ajustar margen superior -->
     <div class="admin-panel">
         <h1><?php echo t('admin_panel'); ?></h1>
         <h2><?php echo t('user_management'); ?></h2>

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search_username'])) {
 }
 ?>
 <?php include 'header.php'; ?>
-<main style="margin: 80px auto; max-width: 800px; padding: 20px;">
+<main style="margin-top: 0;"> <!-- Ajustar margen superior -->
     <div class="section">
         <h2><?= t('friends') ?></h2>
         <h3><?= t('your_friends') ?></h3>
@@ -51,25 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search_username'])) {
             <input type="text" id="search_username" name="search_username" placeholder="<?= t('username') ?>" required>
             <button type="submit" class="btn-primary"><?= t('search') ?></button>
         </form>
-        <?php if ($searchResult): ?>
-            <div style="margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                <p><?= htmlspecialchars($searchResult['username']) ?></p>
-                <form method="POST" action="../routes/send_friend_request.php" style="display: inline;">
-                    <input type="hidden" name="friend_id" value="<?= $searchResult['id'] ?>">
-                    <button type="submit" class="btn-primary"><?= t('send_friend_request') ?></button>
-                </form>
-                <form method="POST" action="../routes/block_user.php" style="display: inline;">
-                    <input type="hidden" name="user_id" value="<?= $searchResult['id'] ?>">
-                    <button type="submit" class="btn-danger"><?= t('block_user') ?></button>
-                </form>
-                <form method="POST" action="../routes/cancel_friend_request.php" style="display: inline;">
-                    <input type="hidden" name="friend_id" value="<?= $searchResult['id'] ?>">
-                    <button type="submit" class="btn-secondary"><?= t('cancel_friend_request') ?></button>
-                </form>
-            </div>
-        <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'): ?>
-            <p><?= t('user_not_found') ?></p>
-        <?php endif; ?>
     </div>
 </main>
 <?php include 'footer.php'; ?>

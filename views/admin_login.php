@@ -6,7 +6,7 @@ session_start();
 
 <?php include 'header.php'; ?>
 
-<main>
+<main style="margin-top: 0;"> <!-- Ajustar margen superior -->
     <div class="login-container">
         <form method="post" action="../routes/admin_login.php" class="login-form">
             <h2><?= t('login') ?> (<?= t('admin') ?>)</h2>

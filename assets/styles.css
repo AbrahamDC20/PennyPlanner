@@ -16,12 +16,7 @@ body {
 
 main {
     flex: 1;
-}
-
-/* Eliminar estilos relacionados con el modo oscuro */
-body.dark-mode, header.dark-mode, footer.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+    padding-top: 0; /* Ajustar el relleno superior si es necesario */
 }
 
 /* Header */
@@ -37,6 +32,7 @@ header {
     padding: 0 20px; /* Remove vertical padding */
     display: flex;
     align-items: center; /* Center items vertically */
+    margin-bottom: 0; /* Asegúrate de que no haya margen inferior */
 }
 
 header nav ul {
