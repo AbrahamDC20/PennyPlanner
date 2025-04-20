@@ -1,8 +1,10 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Start session only if not already started
+}
 require_once dirname(__DIR__) . '/controllers/auth.php';
 require_once dirname(__DIR__) . '/models/db.php';
 require_once dirname(__DIR__) . '/controllers/translations.php';
-session_start();
 requireLogin();
 
 $userId = $_SESSION['user']['id'];

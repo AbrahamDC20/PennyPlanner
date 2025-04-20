@@ -1,10 +1,16 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Start session only if not already started
+}
 require_once dirname(__DIR__) . '/models/db.php';
 require_once dirname(__DIR__) . '/controllers/auth.php';
 require_once dirname(__DIR__) . '/controllers/translations.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32)); // Generar token CSRF si no existe
+    }
+
     $csrfToken = $_POST['csrf_token'] ?? '';
     if (!hash_equals($_SESSION['csrf_token'], $csrfToken)) {
         $_SESSION['error'] = t('invalid_csrf_token');

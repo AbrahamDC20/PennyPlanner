@@ -1,9 +1,11 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Start session only if not already started
+}
 require_once dirname(__DIR__) . '/controllers/auth.php';
 require_once dirname(__DIR__) . '/controllers/profileController.php';
 require_once dirname(__DIR__) . '/controllers/aiController.php';
 require_once dirname(__DIR__) . '/controllers/translations.php';
-session_start();
 requireLogin();
 $recommendations = generateSpendingRecommendations($_SESSION['user']['id']);
 ?>
