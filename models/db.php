@@ -141,15 +141,6 @@ function removePermissionFromRole($roleId, $permissionId) {
     $stmt->close();
 }
 
-// Función para asignar roles a usuarios
-function assignRoleToUser($userId, $roleId) {
-    global $conn;
-    $stmt = $conn->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (?, ?) ON DUPLICATE KEY UPDATE role_id=role_id");
-    $stmt->bind_param("ii", $userId, $roleId);
-    $stmt->execute();
-    $stmt->close();
-}
-
 // Llamar a las funciones para inicializar
 ensureAdminAccount();
 ensureDatabaseSchema();
