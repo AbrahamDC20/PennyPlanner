@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $translations = [
     'es' => [
-        'welcome' => 'Bienvenido a Budget Buddy',
+        'welcome' => 'Bienvenido',
         'select_option' => 'Selecciona una opción del menú para comenzar:',
         'home' => 'Inicio',
         'profile' => 'Perfil',
@@ -16,7 +16,7 @@ $translations = [
         'dark' => 'Oscuro',
         'logout' => 'Cerrar Sesión',
         // ...otras traducciones...
-        'all_rights_reserved' => 'Todos los derechos reservados',
+        'all_rights_reserved' => 'Todos los derechos reservados.',
         'invalid_credentials' => 'Usuario o contraseña incorrectos.',
         'register' => 'Registrarse',
         'login' => 'Iniciar sesión',
@@ -119,8 +119,9 @@ $translations = [
         'accept' => 'Aceptar',
         'reject' => 'Rechazar',
         'spending_recommendations' => 'Recomendaciones de gasto',
-        'start_tutorial' => 'Iniciar Tutorial',
-        'customer_support' => 'Soporte al Cliente',
+        'start_tutorial' => 'Empezar Tutorial',
+        'customer_support' => 'Asistencia al Cliente',
+        'customer_support_description' => 'Estamos aquí para ayudarte con cualquier duda o problema.',
         'contact_us' => 'Contáctanos',
         'message' => 'Mensaje',
         'faq' => 'Preguntas Frecuentes',
@@ -128,7 +129,7 @@ $translations = [
         'faq_answer_1' => 'Ve a la página de restablecimiento de contraseña y sigue las instrucciones.',
         'faq_question_2' => '¿Cómo actualizo mi perfil?',
         'faq_answer_2' => 'Navega a la página de perfil y edita tus datos.',
-        'tutorial_description' => 'Aprende a usar la aplicación paso a paso.',
+        'tutorial_description' => 'Bienvenido al tutorial interactivo de PennyPlanner.',
         'tutorial_home_description' => 'Esta sección explica cómo navegar por la página de inicio.',
         'tutorial_profile_description' => 'Esta sección explica cómo actualizar la información de tu perfil.',
         'tutorial_transactions_description' => 'Esta sección explica cómo gestionar tus transacciones.',
@@ -148,7 +149,7 @@ $translations = [
         '2fa_description' => 'Añade una capa adicional de seguridad a tu cuenta.',
     ],
     'en' => [
-        'welcome' => 'Welcome to Budget Buddy',
+        'welcome' => 'Welcome',
         'select_option' => 'Select an option from the menu to get started:',
         'home' => 'Home',
         'profile' => 'Profile',
@@ -159,7 +160,7 @@ $translations = [
         'dark' => 'Dark',
         'logout' => 'Logout',
         // ...other translations...
-        'all_rights_reserved' => 'All rights reserved',
+        'all_rights_reserved' => 'All rights reserved.',
         'invalid_credentials' => 'Invalid username or password.',
         'register' => 'Register',
         'login' => 'Login',
@@ -263,6 +264,7 @@ $translations = [
         'reject' => 'Reject',
         'start_tutorial' => 'Start Tutorial',
         'customer_support' => 'Customer Support',
+        'customer_support_description' => 'We are here to assist you with any questions or issues.',
         'contact_us' => 'Contact Us',
         'message' => 'Message',
         'faq' => 'Frequently Asked Questions',
@@ -270,7 +272,7 @@ $translations = [
         'faq_answer_1' => 'Go to the reset password page and follow the instructions.',
         'faq_question_2' => 'How do I update my profile?',
         'faq_answer_2' => 'Navigate to the profile page and edit your details.',
-        'tutorial_description' => 'Learn how to use the app step by step.',
+        'tutorial_description' => 'Welcome to the interactive tutorial of PennyPlanner.',
         'tutorial_home_description' => 'This section explains how to navigate the homepage.',
         'tutorial_profile_description' => 'This section explains how to update your profile information.',
         'tutorial_transactions_description' => 'This section explains how to manage your transactions.',
@@ -437,12 +439,14 @@ $translations = [
     ],
 ];
 
-$currentLanguage = $_SESSION['language'] ?? 'es'; // Usar el idioma de la sesión o español por defecto
-if (!in_array($currentLanguage, ['es', 'en', 'lt'])) {
-    $currentLanguage = 'es'; // Asegurarse de que el idioma sea válido
+$currentLanguage = $_SESSION['language'] ?? 'es'; // Default to Spanish if not set
+if (!isset($translations[$currentLanguage])) {
+    $currentLanguage = 'es'; // Fallback to Spanish if the language is invalid
 }
 
 function t($key) {
     global $translations, $currentLanguage;
+
+    // Return the translation if it exists, otherwise return the key itself
     return $translations[$currentLanguage][$key] ?? $key;
 }

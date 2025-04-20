@@ -1,7 +1,9 @@
 <?php
 require_once dirname(__DIR__) . '/controllers/auth.php';
 require_once dirname(__DIR__) . '/controllers/translations.php';
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Start session only if not already started
+}
 
 // Generar token CSRF
 if (empty($_SESSION['csrf_token'])) {
