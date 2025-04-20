@@ -115,19 +115,15 @@ if (!function_exists('updateProfileImageInDB')) {
 }
 
 // Optimizar consulta de transacciones con índice en la columna 'date'
-function getTransactions($userId, $limit = 10, $offset = 0) {
+function getTransactions($userId) {
     global $conn;
-    try {
-        $stmt = $conn->prepare("SELECT description, amount, currency FROM transactions WHERE user_id = ? ORDER BY date DESC LIMIT ? OFFSET ?");
-        $stmt->bind_param("iii", $userId, $limit, $offset);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $stmt->close();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    } catch (Exception $e) {
-        logError($e->getMessage());
-        return [];
-    }
+    $stmt = $conn->prepare("SELECT * FROM transactions WHERE user_id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $transactions = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    return $transactions;
 }
 
 // Obtener configuraciones de la IA para un usuario

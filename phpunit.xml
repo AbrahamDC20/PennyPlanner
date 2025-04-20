@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="tests/bootstrap.php">
+<phpunit bootstrap="tests/bootstrap.php" verbose="true">
     <php>
         <ini name="display_errors" value="1"/>
+        <ini name="error_reporting" value="-1"/>
     </php>
+    <logging>
+        <log type="junit" target="tests/logs/junit.xml"/>
+        <log type="testdox-text" target="tests/logs/testdox.txt"/>
+    </logging>
     <testsuites>
         <testsuite name="Application Test Suite">
             <directory>tests</directory>
