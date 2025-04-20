@@ -1,6 +1,7 @@
 <?php
 require_once '../controllers/auth.php';
 require_once '../models/db.php';
+require_once '../controllers/translations.php'; // Asegúrate de que este archivo existe
 session_start();
 requireLogin();
 

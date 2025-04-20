@@ -1,7 +1,8 @@
 <?php
 require '../controllers/auth.php';
-require '../controllers/profileController.php'; // Asegurarse de incluir el controlador
-require '../controllers/aiController.php'; // Incluir el controlador de IA
+require '../controllers/profileController.php'; // Asegúrate de que este archivo existe
+require '../controllers/aiController.php'; // Asegúrate de que este archivo existe
+require '../controllers/translations.php'; // Asegúrate de que este archivo existe
 session_start();
 requireLogin();
 $recommendations = generateSpendingRecommendations($_SESSION['user']['id']);

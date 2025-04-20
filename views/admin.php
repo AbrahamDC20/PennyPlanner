@@ -1,6 +1,7 @@
 <?php
 require_once dirname(__DIR__) . '/models/db.php';
 require_once dirname(__DIR__) . '/controllers/auth.php';
+require_once dirname(__DIR__) . '/controllers/translations.php'; // Asegúrate de que este archivo existe
 session_start();
 requireRole('admin');
 

@@ -67,7 +67,7 @@ function renderLanguageOptions($currentLanguage) {
         </ul>
     </nav>
 </header>
-<!-- Eliminar cualquier espacio innecesario -->
+<!-- Asegúrate de que no haya un div adicional aquí -->
 <main>
 </main>
 <footer class="footer">
