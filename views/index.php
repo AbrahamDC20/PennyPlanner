@@ -25,29 +25,20 @@ $transactions = getTransactions($userId); // Pasa el userId a la función
             const chart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['January', 'February', 'March'], // Example data
+                    labels: <?= json_encode(array_column($transactions, 'description')) ?>,
                     datasets: [{
-                        label: 'Spending',
-                        data: [500, 700, 300], // Example data
-                        backgroundColor: ['rgba(0, 123, 255, 0.5)', 'rgba(40, 167, 69, 0.5)', 'rgba(220, 53, 69, 0.5)'],
-                        borderColor: ['rgba(0, 123, 255, 1)', 'rgba(40, 167, 69, 1)', 'rgba(220, 53, 69, 1)'],
+                        label: '<?= t('amount') ?>',
+                        data: <?= json_encode(array_column($transactions, 'amount')) ?>,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
                     }]
                 },
                 options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { position: 'top' },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.label}: $${context.raw}`;
-                                }
-                            }
-                        }
-                    },
                     scales: {
-                        y: { beginAtZero: true }
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
             });

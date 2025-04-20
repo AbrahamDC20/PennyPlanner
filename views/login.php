@@ -11,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <main style="margin-top: 80px;"> <!-- Ajustar margen superior -->
     <div class="login-container">
         <form method="post" action="../routes/login.php" class="login-form">
-            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '') ?>"> <!-- Evitar error -->
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '') ?>"> <!-- Validación CSRF -->
             <h2><?= t('login') ?></h2>
             <label for="username"><?= t('username') ?>:</label>
             <input type="text" id="username" name="username" required>

@@ -43,8 +43,8 @@ function renderLanguageOptions($currentLanguage) {
     <div id="notification" class="notification" style="display: none;"></div> <!-- Notification system -->
     <header>
         <nav>
-            <ul class="menu">
-                <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/index.php"><?= t('home') ?></a></li>
+            <ul class="menu" role="menu">
+                <li role="menuitem"><a href="/Website_Technologies_Abraham/Final_Proyect/views/index.php"><?= t('home') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/transactions.php"><?= t('transactions') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/settings.php"><?= t('settings') ?></a></li>
                 <li class="dropdown" style="margin-right: 20px;">

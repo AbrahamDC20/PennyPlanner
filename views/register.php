@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div>
                 <label for="password"><?= t('password') ?>:</label>
                 <input type="password" id="password" name="password" required>
+                <div id="password-strength"></div> <!-- Indicador de fortaleza de contraseña -->
             </div>
             <div>
                 <label for="email"><?= t('email') ?>:</label>

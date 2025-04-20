@@ -83,6 +83,9 @@ $conn->query("
 $conn->query("
     CREATE INDEX IF NOT EXISTS idx_transactions_date ON transactions(date)
 ");
+$conn->query("
+    CREATE INDEX IF NOT EXISTS idx_transactions_user_id ON transactions(user_id)
+");
 
 // Asegurarse de que la cuenta de administrador exista (llamar explícitamente en lugar de automáticamente)
 // ensureAdminAccount();

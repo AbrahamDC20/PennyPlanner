@@ -237,7 +237,9 @@ $translations = [
     ],
     'fr' => [
         'welcome' => 'Bienvenue sur Budget Buddy',
-        // ...otras traducciones...
+        'login' => 'Connexion',
+        'register' => 'S\'inscrire',
+        // ...other translations...
     ],
     'de' => [
         'welcome' => 'Willkommen bei Budget Buddy',

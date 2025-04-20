@@ -1,0 +1,25 @@
+2025-04-20 17:26:10 - Sanitized username: Abraham
+2025-04-20 17:26:10 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 17:26:10 - User found: {"id":3,"username":"Abraham","password_hash":"$2y$12$gXleFmJlxR3BtD5aK7R7uekGbE2I7xKuloJ5sTPcP0x7gqY37yGzq","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":null,"role":"admin","created_at":"2025-04-20 18:04:50"}
+2025-04-20 17:26:10 - Stored hash: $2y$12$gXleFmJlxR3BtD5aK7R7uekGbE2I7xKuloJ5sTPcP0x7gqY37yGzq
+2025-04-20 17:26:10 - Password verification result for user Abraham: success
+2025-04-20 17:26:10 - Password verification successful for user: Abraham
+2025-04-20 17:26:10 - Password hash updated for user: Abraham
+2025-04-20 17:26:16 - Sanitized username: Abraham
+2025-04-20 17:26:16 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 17:26:16 - User found: {"id":3,"username":"Abraham","password_hash":"$2y$10$OttdsDPaH6\/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":null,"role":"admin","created_at":"2025-04-20 18:04:50"}
+2025-04-20 17:26:16 - Stored hash: $2y$10$OttdsDPaH6/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.
+2025-04-20 17:26:16 - Password verification result for user Abraham: success
+2025-04-20 17:26:16 - Password verification successful for user: Abraham
+2025-04-20 17:26:46 - Sanitized username: Abraham
+2025-04-20 17:26:46 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 17:26:46 - User found: {"id":3,"username":"Abraham","password_hash":"$2y$10$OttdsDPaH6\/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":null,"role":"admin","created_at":"2025-04-20 18:04:50"}
+2025-04-20 17:26:46 - Stored hash: $2y$10$OttdsDPaH6/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.
+2025-04-20 17:26:46 - Password verification result for user Abraham: success
+2025-04-20 17:26:46 - Password verification successful for user: Abraham
+2025-04-20 17:27:46 - Sanitized username: Abraham
+2025-04-20 17:27:46 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 17:27:46 - User found: {"id":3,"username":"Abraham","password_hash":"$2y$10$OttdsDPaH6\/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":null,"role":"admin","created_at":"2025-04-20 18:04:50"}
+2025-04-20 17:27:46 - Stored hash: $2y$10$OttdsDPaH6/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.
+2025-04-20 17:27:46 - Password verification result for user Abraham: success
+2025-04-20 17:27:46 - Password verification successful for user: Abraham
