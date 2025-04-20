@@ -10,43 +10,6 @@ body {
     color: #333333; /* Mejor contraste */
 }
 
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff; /* Texto blanco */
-}
-
-body.dark-mode header, body.dark-mode footer {
-    background-color: #1e1e1e;
-    color: #ffffff;
-}
-
-body.dark-mode .dropdown-menu {
-    background-color: #333333;
-    color: #ffffff;
-}
-
-body.dark-mode table th, body.dark-mode table td {
-    color: #ffffff;
-}
-
-body.dark-mode input, 
-body.dark-mode select, 
-body.dark-mode button, 
-body.dark-mode label {
-    color: #ffffff; /* Texto blanco para mejor visibilidad */
-    background-color: #333333; /* Fondo oscuro para contraste */
-    border-color: #555555; /* Bordes más visibles */
-}
-
-body.dark-mode .btn-primary {
-    background-color: #0056b3; /* Azul más oscuro */
-    color: #ffffff; /* Texto blanco */
-}
-
-body.dark-mode .btn-primary:hover {
-    background-color: #003d80; /* Azul más oscuro al pasar el cursor */
-}
-
 /* Header */
 header {
     position: fixed;
@@ -119,6 +82,23 @@ button:hover, .btn:hover {
 
 button:active, .btn:active {
     transform: scale(0.95);
+}
+
+.logout-button {
+    background-color: #dc3545; /* Rojo para indicar acción de cierre */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+    margin-left: auto; /* Empuja el botón hacia el borde derecho */
+}
+
+.logout-button:hover {
+    background-color: #c82333; /* Rojo más oscuro al pasar el cursor */
 }
 
 /* Forms */
@@ -223,14 +203,25 @@ table tr:nth-child(even) {
     display: none;
     position: absolute;
     top: calc(100% + 5px);
-    right: 0; /* Align dropdown to the right */
+    right: 0;
     background-color: #ffffff;
     color: #333333;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 5px 0;
+    padding: 0;
     border-radius: 4px;
     z-index: 1000;
-    min-width: 150px;
+    width: 150px;
+    box-sizing: border-box;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s ease-in-out;
+}
+
+.dropdown-menu.active {
+    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 /* Ensure dropdown items are styled consistently */
@@ -257,13 +248,13 @@ table tr:nth-child(even) {
     position: absolute;
     top: calc(100% + 5px); /* Asegura que el menú aparezca justo debajo del botón */
     left: 0; /* Alinea el menú al lado izquierdo del botón */
-    background-color: #ffffff;
-    color: #333333;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333; /* Texto oscuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
     padding: 0; /* Eliminar padding adicional */
-    border-radius: 4px;
+    border-radius: 4px; /* Bordes redondeados */
     z-index: 1000;
-    width: 100%; /* Asegura que el ancho sea igual al del botón */
+    width: 150px; /* Ancho consistente */
     box-sizing: border-box; /* Incluye padding y borde en el ancho */
     overflow: hidden; /* Evita desbordamientos */
     visibility: hidden; /* Oculta el menú inicialmente */
@@ -288,7 +279,7 @@ table tr:nth-child(even) {
 }
 
 .dropdown-menu li:hover {
-    background-color: #f1f1f1; /* Color de fondo al pasar el cursor */
+    background-color: #333; /* Fondo gris oscuro al pasar el cursor */
 }
 
 /* Flag icon adjustments */
@@ -327,6 +318,40 @@ table tr:nth-child(even) {
     opacity: 1; /* Hace el menú completamente opaco */
 }
 
+/* User menu dropdown */
+#user-menu {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333333; /* Texto oscuro */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 5px 0; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    display: none; /* Ocultar inicialmente */
+    position: absolute;
+    top: calc(100% + 5px); /* Asegura que el menú aparezca justo debajo del botón */
+    right: 0; /* Alinea el menú al lado derecho */
+    z-index: 1000;
+    width: 150px; /* Ancho consistente */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho */
+    overflow: hidden; /* Evita desbordamientos */
+    visibility: hidden; /* Oculta el menú inicialmente */
+    opacity: 0; /* Hace el menú invisible inicialmente */
+    transition: visibility 0s, opacity 0.2s ease-in-out; /* Transición suave */
+}
+
+#user-menu li {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px; /* Espaciado interno */
+    font-size: 0.9rem; /* Tamaño de fuente consistente */
+    cursor: pointer;
+    color: #333333; /* Texto oscuro */
+    text-decoration: none; /* Sin subrayado */
+}
+
+#user-menu li:hover {
+    background-color: #f1f1f1; /* Fondo gris claro al pasar el cursor */
+}
+
 /* Footer */
 footer.footer {
     text-align: center;
@@ -336,31 +361,6 @@ footer.footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-}
-
-/* Dark Mode Adjustments */
-body.dark-mode .section {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-body.dark-mode header {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-body.dark-mode footer.footer {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-body.dark-mode .dropdown-menu {
-    background-color: #333333;
-    color: #ffffff;
-}
-
-body.dark-mode table th {
-    background-color: #333333;
 }
 
 /* Responsive Design */

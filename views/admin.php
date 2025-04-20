@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
                 <?php foreach ($users as $user): ?>
                     <tr>
                         <td><?php echo htmlspecialchars($user['username']); ?></td>
-                        <td><?php echo htmlspecialchars($user['email'] ?? ''); ?></td> <!-- Mostrar correo -->
+                        <td><?php echo htmlspecialchars($user['email']); ?></td> <!-- Mostrar correo electrónico -->
                         <td>
                             <form method="POST">
                                 <input type="hidden" name="delete_user_id" value="<?php echo $user['id']; ?>">

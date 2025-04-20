@@ -158,7 +158,7 @@ function getFriends($userId) {
 if (!function_exists('listUsers')) {
     function listUsers() {
         global $conn;
-        $stmt = $conn->prepare("SELECT id, username FROM users");
+        $stmt = $conn->prepare("SELECT id, username, email FROM users"); // Incluir el campo email
         $stmt->execute();
         $result = $stmt->get_result();
         $users = $result->fetch_all(MYSQLI_ASSOC);

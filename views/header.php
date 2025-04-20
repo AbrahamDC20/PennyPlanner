@@ -47,6 +47,9 @@ function renderLanguageOptions($currentLanguage) {
                 <li role="menuitem"><a href="/Website_Technologies_Abraham/Final_Proyect/views/index.php"><?= t('home') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/transactions.php"><?= t('transactions') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/settings.php"><?= t('settings') ?></a></li>
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
+                    <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/admin.php"><?= t('admin_panel') ?></a></li>
+                <?php endif; ?>
                 <li class="dropdown" style="margin-right: 20px;">
                     <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('language-menu')" aria-haspopup="true" aria-expanded="false">
                         <?= t('language') ?>
@@ -56,22 +59,16 @@ function renderLanguageOptions($currentLanguage) {
                     </ul>
                 </li>
                 <?php if (isset($_SESSION['user'])): ?>
-                    <li class="dropdown" style="margin-right: 20px;">
-                        <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('user-menu')">
+                    <li style="margin-right: 20px;">
+                        <a href="/Website_Technologies_Abraham/Final_Proyect/views/profile.php" class="user-menu-button" style="display: flex; align-items: center; gap: 10px;">
                             <img src="<?= isset($_SESSION['user']['profile_image']) ? '/Website_Technologies_Abraham/Final_Proyect/uploads/' . htmlspecialchars($_SESSION['user']['profile_image']) : '/Website_Technologies_Abraham/Final_Proyect/assets/default-profile.png' ?>" alt="<?= t('profile_image') ?>" class="header-profile-image">
                             <?= htmlspecialchars($_SESSION['user']['username']) ?>
-                        </button>
-                        <ul id="user-menu" class="dropdown-menu" style="width: 150px;"> <!-- Ajustar tamaño -->
-                            <li>
-                                <label class="switch" for="dark-mode-toggle">
-                                    <?= t('dark_mode') ?>
-                                    <input type="checkbox" id="dark-mode-toggle" style="display: none;">
-                                    <span class="slider"></span>
-                                </label>
-                            </li>
-                            <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/profile.php"><?= t('profile') ?></a></li>
-                            <li><a href="/Website_Technologies_Abraham/Final_Proyect/routes/logout.php"><?= t('logout') ?></a></li>
-                        </ul>
+                        </a>
+                    </li>
+                    <li style="margin-left: auto; display: flex; align-items: center;">
+                        <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/logout.php">
+                            <button type="submit" class="logout-button"><?= t('logout') ?></button>
+                        </form>
                     </li>
                 <?php endif; ?>
             </ul>
@@ -80,7 +77,6 @@ function renderLanguageOptions($currentLanguage) {
     <main>
     </main>
     <footer class="footer">
-        <p>&copy; 2025 PennyPlanner. <?= t('all_rights_reserved') ?></p>
     </footer>
     <script>
         function toggleDropdown(menuId) {
@@ -96,7 +92,7 @@ function renderLanguageOptions($currentLanguage) {
             }
         }
 
-        // Cerrar los menús desplegables al hacer clic fuera de ellos
+        // Close dropdowns when clicking outside
         document.addEventListener('click', (event) => {
             const dropdowns = document.querySelectorAll('.dropdown-menu');
             dropdowns.forEach((dropdown) => {
@@ -124,24 +120,10 @@ function renderLanguageOptions($currentLanguage) {
             document.getElementById('loading-indicator').style.display = 'none';
         }
 
-        // Dark mode toggle
-        const toggle = document.getElementById('dark-mode-toggle');
-        const body = document.body;
-
-        if (localStorage.getItem('dark-mode') === 'enabled') {
-            body.classList.add('dark-mode');
-            toggle.checked = true;
+        // Asistente interactivo
+        function showAssistant() {
+            alert('<?= t('welcome') ?>! <?= t('tutorial_home') ?>');
         }
-
-        toggle?.addEventListener('change', () => {
-            if (toggle.checked) {
-                body.classList.add('dark-mode');
-                localStorage.setItem('dark-mode', 'enabled');
-            } else {
-                body.classList.remove('dark-mode');
-                localStorage.setItem('dark-mode', 'disabled');
-            }
-        });
     </script>
     <script src="/Website_Technologies_Abraham/Final_Proyect/assets/socket.io.js"></script>
     <script>
@@ -149,11 +131,6 @@ function renderLanguageOptions($currentLanguage) {
         socket.on('notification', (data) => {
             showNotification(data.message, data.type);
         });
-
-        // Asistente interactivo
-        function showAssistant() {
-            alert('<?= t('welcome') ?>! <?= t('tutorial_home') ?>');
-        }
     </script>
 </body>
 </html>
