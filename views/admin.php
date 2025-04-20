@@ -11,6 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
     header('Location: admin.php');
     exit();
 }
+
+$adminId = $_SESSION['user']['id'];
+$friends = getFriends($adminId); // Obtener amigos del administrador
 ?>
 <?php include 'header.php'; ?>
 <main style="margin: 80px auto; max-width: 1200px; padding: 0 20px;"> <!-- Márgenes laterales -->

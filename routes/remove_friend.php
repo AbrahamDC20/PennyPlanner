@@ -1,0 +1,19 @@
+<?php
+session_start();
+require_once '../models/db.php';
+require_once '../controllers/auth.php';
+requireLogin();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $friendId = intval($_POST['friend_id']);
+    $userId = $_SESSION['user']['id'];
+
+    $stmt = $conn->prepare("DELETE FROM friends WHERE user_id = ? AND friend_id = ?");
+    $stmt->bind_param("ii", $userId, $friendId);
+    $stmt->execute();
+    $stmt->close();
+
+    $redirectUrl = $_SESSION['user']['role'] === 'admin' ? '../views/admin.php' : '../views/friends.php';
+    header("Location: $redirectUrl");
+    exit();
+}

@@ -46,17 +46,10 @@ function renderLanguageOptions($currentLanguage) {
                 <li role="menuitem"><a href="/Website_Technologies_Abraham/Final_Proyect/views/index.php"><?= t('home') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/transactions.php"><?= t('transactions') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/settings.php"><?= t('settings') ?></a></li>
+                <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/friends_management.php"><?= t('friends') ?></a></li>
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
                     <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/admin.php"><?= t('admin_panel') ?></a></li>
                 <?php endif; ?>
-                <li class="dropdown" style="margin-right: 20px;">
-                    <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('language-menu')" aria-haspopup="true" aria-expanded="false">
-                        <?= t('language') ?>
-                    </button>
-                    <ul id="language-menu" class="dropdown-menu" style="width: 150px;"> <!-- Ajustar tamaño -->
-                        <?php renderLanguageOptions($_SESSION['language']); ?>
-                    </ul>
-                </li>
                 <?php if (isset($_SESSION['user'])): ?>
                     <li style="margin-right: 20px;">
                         <a href="/Website_Technologies_Abraham/Final_Proyect/views/profile.php" class="user-menu-button" style="display: flex; align-items: center; gap: 10px;">
@@ -82,21 +75,16 @@ function renderLanguageOptions($currentLanguage) {
             const menu = document.getElementById(menuId);
             const isActive = menu.classList.contains('active');
             document.querySelectorAll('.dropdown-menu').forEach((dropdown) => {
-                if (dropdown !== menu) {
-                    dropdown.classList.remove('active');
-                    dropdown.setAttribute('aria-expanded', 'false');
-                }
+                dropdown.classList.remove('active');
+                dropdown.setAttribute('aria-expanded', 'false');
             });
             if (!isActive) {
                 menu.classList.add('active');
                 menu.setAttribute('aria-expanded', 'true');
-            } else {
-                menu.classList.remove('active');
-                menu.setAttribute('aria-expanded', 'false');
             }
         }
 
-        // Cierra los menús desplegables al hacer clic fuera de ellos
+        // Cierra el menú al hacer clic fuera de él
         document.addEventListener('click', (event) => {
             const dropdowns = document.querySelectorAll('.dropdown-menu');
             dropdowns.forEach((dropdown) => {
@@ -108,14 +96,7 @@ function renderLanguageOptions($currentLanguage) {
             });
         });
 
-        // Evita que el clic dentro del menú cierre el menú
-        document.querySelectorAll('.dropdown-menu').forEach((menu) => {
-            menu.addEventListener('click', (event) => {
-                event.stopPropagation();
-            });
-        });
-
-        // Cierra el menú solo al seleccionar una opción
+        // Cierra el menú al seleccionar una opción
         document.querySelectorAll('.dropdown-menu button').forEach((button) => {
             button.addEventListener('click', () => {
                 const menu = button.closest('.dropdown-menu');

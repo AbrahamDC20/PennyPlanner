@@ -292,29 +292,9 @@ table tr:nth-child(even) {
 /* Mostrar el menú desplegable cuando se active */
 .dropdown-menu.active {
     display: block;
-    visibility: visible; /* Hace visible el menú */
-    opacity: 1; /* Hace el menú completamente opaco */
-    transition: opacity 0.2s ease-in-out; /* Transición suave */
-}
-
-/* Asegura que el menú no desaparezca al interactuar con él */
-.dropdown-menu {
-    position: absolute;
-    z-index: 1000;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-/* Mostrar el menú desplegable cuando se active */
-.dropdown-menu.active {
-    display: block;
-    visibility: visible; /* Hace visible el menú */
-    opacity: 1; /* Hace el menú completamente opaco */
-    transition: opacity 0.2s ease-in-out; /* Transición suave */
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
 }
 
 /* Asegura que el menú no desaparezca al interactuar con él */
@@ -559,4 +539,55 @@ footer.footer {
 
 .switch input:checked + label:before {
     transform: translateX(14px);
+}
+
+/* Language button styles */
+.language-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    color: black; /* Cambiar texto a negro */
+}
+
+.language-button:hover {
+    background-color: #f1f1f1;
+}
+
+.flag-icon {
+    width: 30px;
+    height: 20px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    main {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .section {
+        padding: 10px;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
 }
