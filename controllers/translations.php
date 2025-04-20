@@ -77,6 +77,7 @@ $translations = [
         'tutorial_settings' => 'Personaliza la configuración de tu aplicación.',
         'start_using_app' => 'Comenzar a usar la aplicación',
         'weak' => 'Contraseña débil. Usa al menos 8 caracteres.',
+        'documentation' => 'Documentación',
     ],
     'en' => [
         'welcome' => 'Welcome to Budget Buddy',
@@ -151,6 +152,7 @@ $translations = [
         'tutorial_settings' => 'Customize your app settings.',
         'start_using_app' => 'Start Using the App',
         'weak' => 'Weak password. Use at least 8 characters.',
+        'documentation' => 'Documentation',
     ],
     'lt' => [
         'welcome' => 'Sveiki atvykę į Budget Buddy',
@@ -225,6 +227,7 @@ $translations = [
         'tutorial_settings' => 'Pritaikykite programos nustatymus.',
         'start_using_app' => 'Pradėti naudoti programą',
         'weak' => 'Silpnas slaptažodis. Naudokite bent 8 simbolius.',
+        'documentation' => 'Dokumentacija',
     ],
 ];
 

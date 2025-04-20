@@ -98,6 +98,14 @@ form button {
     margin-top: 15px; /* Add spacing above the button */
 }
 
+/* Ajustar el botón de actualizar en el perfil */
+form button {
+    margin-top: 20px;
+    padding: 10px 20px; /* Ajustar el tamaño del botón */
+    max-width: 200px; /* Limitar el ancho del botón */
+    align-self: center; /* Centrar el botón horizontalmente */
+}
+
 /* Menú general */
 .menu {
     display: flex;
@@ -892,6 +900,73 @@ form button {
     margin-top: 20px; /* Add spacing above the button */
 }
 
+/* Alinear los elementos en la sección de gestiones */
+.section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.section form div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section form label {
+    flex: 0 0 150px; /* Ancho fijo para las etiquetas */
+    text-align: right; /* Alinear texto a la derecha */
+}
+
+/* Alinear los textos al lado de los recuadros */
+.section form input,
+.section form select {
+    flex: 1; /* Hacer que los recuadros ocupen el espacio restante */
+}
+
+/* Ajustar el botón de agregar transacción */
+.section form button {
+    flex: 0 0 auto; /* Evitar que el botón se estire */
+    padding: 10px 20px;
+}
+
+/* Ajustar el diseño del selector de divisa y el botón */
+.section form div {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 10px;
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.section form select,
+.section form button {
+    height: 40px; /* Ensure consistent height */
+    padding: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center; /* Ensure vertical alignment */
+    justify-content: center; /* Center text inside the button */
+    flex: 1; /* Ensure both elements take equal width */
+    max-width: 200px; /* Limit width for better alignment */
+}
+
+.section form label {
+    flex: 0 0 150px; /* Fixed width for labels */
+    text-align: right; /* Align text to the right */
+}
+
+.section form select {
+    flex: 1; /* Allow the dropdown to take available space */
+    max-width: 200px; /* Limit the width */
+}
+
+.section form button {
+    flex: 0 0 auto; /* Prevent the button from stretching */
+    height: 40px; /* Match the height of the dropdown */
+    padding: 10px 20px; /* Add padding for better appearance */
+}
+
 /* Estilos para el tutorial */
 .tutorial-container {
     margin: 20px auto;
@@ -926,4 +1001,23 @@ form button {
 
 .tutorial-container button:hover {
     background-color: #0056b3;
+}
+
+/* Estilos para la página de documentación */
+.documentation-container {
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.documentation-container h1, .documentation-container h2 {
+    color: #333;
+}
+
+.documentation-container p {
+    color: #555;
+    line-height: 1.6;
 }

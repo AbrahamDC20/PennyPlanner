@@ -1,5 +1,6 @@
 <?php
 require_once '../models/db.php'; // Ruta corregida
+require_once dirname(__DIR__) . '/controllers/tutorialController.php'; // Importar controlador de tutoriales
 
 // Registrar un nuevo usuario
 function registerUser($username, $password, $firstName, $lastName, $email, $phone) {
@@ -39,6 +40,10 @@ function registerUser($username, $password, $firstName, $lastName, $email, $phon
             throw new Exception('Error executing query: ' . $stmt->error);
         }
         $stmt->close();
+
+        // Generar tutorial personalizado
+        $tutorialContent = generateTutorial($username);
+        saveTutorial($conn->insert_id, $tutorialContent); // Guardar tutorial en la base de datos
     } catch (Exception $e) {
         logError('Error registering user: ' . $e->getMessage());
         throw $e;

@@ -13,10 +13,17 @@ $transactions = getTransactions();
     <div class="section">
         <h2><?= t('transactions') ?></h2>
         <form method="POST" action="transactions.php">
-            <input type="text" name="description" placeholder="<?= t('description') ?>" required>
-            <input type="number" name="amount" placeholder="<?= t('amount') ?>" min="0" required>
-            <div style="display: flex; gap: 10px; align-items: stretch; height: 40px;">
-                <select name="currency" style="flex: 1;" required>
+            <div>
+                <label for="description"><?= t('description') ?>:</label>
+                <input type="text" id="description" name="description" placeholder="<?= t('description') ?>" required>
+            </div>
+            <div>
+                <label for="amount"><?= t('amount') ?>:</label>
+                <input type="number" id="amount" name="amount" placeholder="<?= t('amount') ?>" min="0" required>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <label for="currency" style="flex: 0 0 150px;"><?= t('currency_options') ?>:</label>
+                <select id="currency" name="currency" style="flex: 1;" required>
                     <option value="USD"><?= t('dollars') ?></option>
                     <option value="EUR"><?= t('euros') ?></option>
                     <option value="GBP"><?= t('pounds') ?></option>

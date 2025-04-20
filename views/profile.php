@@ -16,7 +16,7 @@ requireLogin();
                 <h3><?= htmlspecialchars($_SESSION['user']['username']) ?></h3>
             </div>
         </div>
-        <form method="POST" action="../routes/update_profile.php" enctype="multipart/form-data">
+        <form method="POST" action="../routes/update_profile.php" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
             <label for="username"><?= t('username') ?>:</label>
             <input type="text" id="username" name="username" value="<?= htmlspecialchars($_SESSION['user']['username']) ?>" required>
             <label for="email"><?= t('email') ?>:</label>
@@ -25,7 +25,6 @@ requireLogin();
             <input type="text" id="phone" name="phone" value="<?= htmlspecialchars($_SESSION['user']['phone']) ?>">
             <label for="profile_image"><?= t('profile_image') ?>:</label>
             <input type="file" id="profile_image" name="profile_image" accept="image/*">
-            <p><?= t('image_requirements') ?></p>
             <button type="submit"><?= t('update') ?></button>
         </form>
         <?php if (isset($_SESSION['error'])): ?>
