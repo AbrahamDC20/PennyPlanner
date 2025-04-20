@@ -98,7 +98,7 @@ function ensureDatabaseSchema() {
     }
 
     // Asegurar integridad referencial en la tabla transactions
-    $conn->query("ALTER TABLE transactions ADD CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE");
+    $conn->query("ALTER TABLE transactions ADD CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE");
 }
 
 // Función para obtener roles
