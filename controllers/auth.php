@@ -44,6 +44,9 @@ function registerUser($username, $password, $firstName, $lastName, $email, $phon
         // Generar tutorial personalizado
         $tutorialContent = generateTutorial($username);
         saveTutorial($conn->insert_id, $tutorialContent); // Guardar tutorial en la base de datos
+
+        // Enviar notificación de bienvenida
+        notifyUserByEmail($email, t('welcome'), t('welcome_message'));
     } catch (Exception $e) {
         logError('Error registering user: ' . $e->getMessage());
         throw $e;
@@ -208,5 +211,16 @@ function resetPassword($token, $newPassword) {
     $stmt->bind_param("s", $token);
     $stmt->execute();
     $stmt->close();
+}
+
+// Notificar al usuario por correo electrónico
+function notifyUserByEmail($email, $subject, $message) {
+    $headers = "From: PennyPlanner <pennyplanner2025@gmail.com>\r\n";
+    $headers .= "Reply-To: pennyplanner2025@gmail.com\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+    if (!mail($email, $subject, $message, $headers)) {
+        logError("Failed to send email to $email");
+    }
 }
 ?>

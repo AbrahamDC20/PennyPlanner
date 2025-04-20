@@ -17,6 +17,40 @@ $transactions = getTransactions(); // Ensure $transactions is defined
                 <li><?php echo htmlspecialchars($transaction['description']); ?> - <?php echo htmlspecialchars($transaction['amount']); ?> USD</li>
             <?php endforeach; ?>
         </ul>
+        <div id="chart-container" style="width: 100%; height: 400px;"></div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('chart-container').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['January', 'February', 'March'], // Example data
+                    datasets: [{
+                        label: 'Spending',
+                        data: [500, 700, 300], // Example data
+                        backgroundColor: ['rgba(0, 123, 255, 0.5)', 'rgba(40, 167, 69, 0.5)', 'rgba(220, 53, 69, 0.5)'],
+                        borderColor: ['rgba(0, 123, 255, 1)', 'rgba(40, 167, 69, 1)', 'rgba(220, 53, 69, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: $${context.raw}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        </script>
     </div>
 </main>
 <?php include 'footer.php'; ?>

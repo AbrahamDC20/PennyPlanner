@@ -229,9 +229,21 @@ $translations = [
         'weak' => 'Silpnas slaptažodis. Naudokite bent 8 simbolius.',
         'documentation' => 'Dokumentacija',
     ],
+    'fr' => [
+        'welcome' => 'Bienvenue sur Budget Buddy',
+        // ...otras traducciones...
+    ],
+    'de' => [
+        'welcome' => 'Willkommen bei Budget Buddy',
+        // ...otras traducciones...
+    ],
 ];
 
-$currentLanguage = $_SESSION['language'] ?? 'es';
+$currentLanguage = $_SESSION['language'] ?? substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+if (!in_array($currentLanguage, ['es', 'en', 'lt'])) {
+    $currentLanguage = 'es'; // Default to Spanish
+}
+
 function t($key) {
     global $translations, $currentLanguage;
     return $translations[$currentLanguage][$key] ?? $key;

@@ -26,7 +26,6 @@ if (!isset($_SESSION['language'])) {
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/index.php"><?= t('home') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/transactions.php"><?= t('transactions') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/settings.php"><?= t('settings') ?></a></li>
-                <!-- Removed documentation link -->
                 <?php if (isset($_SESSION['user'])): ?>
                     <li class="dropdown" style="margin-right: 20px;">
                         <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('user-menu')">
@@ -171,6 +170,18 @@ if (!isset($_SESSION['language'])) {
                 localStorage.setItem('dark-mode', 'disabled');
             }
         });
+    </script>
+    <script src="/Website_Technologies_Abraham/Final_Proyect/assets/socket.io.js"></script>
+    <script>
+        const socket = io('http://localhost:3000'); // Conexión a WebSocket
+        socket.on('notification', (data) => {
+            showNotification(data.message, data.type);
+        });
+
+        // Asistente interactivo
+        function showAssistant() {
+            alert('<?= t('welcome') ?>! <?= t('tutorial_home') ?>');
+        }
     </script>
 </body>
 </html>

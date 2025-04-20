@@ -38,64 +38,68 @@ header nav ul li a:hover {
 }
 
 /* Botones */
-button {
+button, .btn {
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
+    border-radius: 5px;
+    padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Make buttons take full width */
-    max-width: 300px; /* Limit the width for better alignment */
-    margin: 0 auto; /* Center the button */
-    display: block; /* Ensure proper alignment */
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    display: inline-block;
 }
 
-button:hover {
+button:hover, .btn:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active, .btn:active {
+    transform: scale(0.95);
 }
 
 /* Formularios */
-form input, form select, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Include padding and border in width */
-}
-
-form input:focus, form select:focus, form textarea:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-form select {
-    width: 100%; /* Ensure it aligns with input fields */
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Include padding and border in width */
-}
-
-form select, form button {
+form {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px; /* Match the input field style */
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 form label {
     font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
     color: #333;
+    margin-bottom: 5px;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+form input:focus, form select:focus, form button:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 form button {
-    margin-top: 15px; /* Add spacing above the button */
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
 }
 
 /* Ajustar el botón de actualizar en el perfil */
@@ -143,10 +147,12 @@ form button {
 
 /* Adjust margin for the profile section */
 .section {
-    margin: 10px auto; /* Reduce top margin */
-    max-width: 800px; /* Keep the width limit for readability */
-    padding: 20px; /* Maintain padding for spacing */
-    box-sizing: border-box; /* Include padding in width calculation */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
 }
 
 .section {
@@ -934,37 +940,18 @@ form button {
 .section form div {
     display: flex;
     align-items: center; /* Align items vertically */
-    gap: 10px;
+    gap: 10px; /* Add spacing between elements */
     flex-wrap: nowrap; /* Prevent wrapping */
 }
 
-.section form select,
-.section form button {
-    height: 40px; /* Ensure consistent height */
-    padding: 10px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center; /* Ensure vertical alignment */
-    justify-content: center; /* Center text inside the button */
-    flex: 1; /* Ensure both elements take equal width */
-    max-width: 200px; /* Limit width for better alignment */
-}
-
-.section form label {
-    flex: 0 0 150px; /* Fixed width for labels */
-    text-align: right; /* Align text to the right */
-}
-
 .section form select {
-    flex: 1; /* Allow the dropdown to take available space */
-    max-width: 200px; /* Limit the width */
+    flex: 0 0 120px; /* Reduce the width of the select box */
+    padding: 5px;
 }
 
 .section form button {
     flex: 0 0 auto; /* Prevent the button from stretching */
-    height: 40px; /* Match the height of the dropdown */
-    padding: 10px 20px; /* Add padding for better appearance */
+    padding: 10px 20px;
 }
 
 /* Estilos para el tutorial */
@@ -1020,4 +1007,205 @@ form button {
 .documentation-container p {
     color: #555;
     line-height: 1.6;
+}
+
+/* Asegurar que las etiquetas sean visibles en modo oscuro */
+body.dark-mode label {
+    color: #ffffff !important; /* Forzar el color blanco para las etiquetas */
+}
+
+body.dark-mode select {
+    color: #ffffff; /* Asegurar que el texto de los select sea blanco */
+    background-color: #333333; /* Fondo oscuro para select */
+}
+
+body.dark-mode option {
+    color: #000000; /* Texto negro para las opciones desplegables */
+    background-color: #ffffff; /* Fondo blanco para opciones */
+}
+
+body.dark-mode label,
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    color: #ffffff; /* Cambiar el color del texto a blanco */
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #333333; /* Fondo oscuro para campos de entrada */
+    border: 1px solid #555555; /* Borde sutil para inputs */
+}
+
+body.dark-mode button {
+    background-color: #0056b3; /* Fondo azul oscuro para botones */
+    color: #ffffff; /* Texto blanco */
+}
+
+/* Asegurar que las etiquetas y textos sean visibles en modo oscuro */
+body.dark-mode label,
+body.dark-mode h3,
+body.dark-mode .profile-username h3,
+body.dark-mode .section h2,
+body.dark-mode .section h3 {
+    color: #ffffff; /* Cambiar el color del texto a blanco */
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #333333; /* Fondo oscuro para campos de entrada */
+    color: #ffffff; /* Texto blanco */
+    border: 1px solid #555555; /* Borde sutil para inputs */
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode select option {
+    color: #cccccc; /* Color gris claro para los placeholders */
+}
+
+/* Botón de exportación */
+a.btn {
+    text-decoration: none;
+    margin: 10px 0;
+    display: inline-block;
+    text-align: center;
+}
+
+/* Espaciado entre elementos */
+.section h2, .section h3 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Ajustar el diseño del formulario de filtros */
+form[method="GET"] {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+form[method="GET"] input, form[method="GET"] select {
+    flex: 1;
+    min-width: 200px;
+}
+
+form[method="GET"] button {
+    flex: 0 0 auto;
+}
+
+/* Mejorar la tabla de transacciones */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Estilos para formularios estilizados */
+.styled-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.styled-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.styled-form label {
+    font-weight: bold;
+    color: #333;
+}
+
+.styled-form input,
+.styled-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.styled-form input:focus,
+.styled-form select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.styled-form .btn-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.styled-form .btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.styled-form .btn-primary:active {
+    transform: scale(0.95);
+}
+
+/* Estilo para alinear el selector de moneda y el botón */
+.form-group-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group-inline select {
+    flex: 0 0 120px; /* Reducir el tamaño del selector */
+    padding: 5px;
+}
+
+.form-group-inline .btn-primary {
+    flex: 0 0 150px; /* Ajustar el tamaño del botón */
+    padding: 5px 10px;
+    font-size: 0.9rem; /* Reducir el tamaño de la fuente */
 }

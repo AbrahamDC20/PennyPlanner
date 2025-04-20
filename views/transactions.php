@@ -12,23 +12,23 @@ $transactions = getTransactions();
 <main>
     <div class="section">
         <h2><?= t('transactions') ?></h2>
-        <form method="POST" action="transactions.php">
-            <div>
+        <form method="POST" action="transactions.php" class="styled-form">
+            <div class="form-group">
                 <label for="description"><?= t('description') ?>:</label>
                 <input type="text" id="description" name="description" placeholder="<?= t('description') ?>" required>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="amount"><?= t('amount') ?>:</label>
                 <input type="number" id="amount" name="amount" placeholder="<?= t('amount') ?>" min="0" required>
             </div>
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <label for="currency" style="flex: 0 0 150px;"><?= t('currency_options') ?>:</label>
-                <select id="currency" name="currency" style="flex: 1;" required>
+            <div class="form-group-inline">
+                <label for="currency"><?= t('currency_options') ?>:</label>
+                <select id="currency" name="currency" required>
                     <option value="USD"><?= t('dollars') ?></option>
                     <option value="EUR"><?= t('euros') ?></option>
                     <option value="GBP"><?= t('pounds') ?></option>
                 </select>
-                <button type="submit" style="flex: 1;"><?= t('add_transaction') ?></button>
+                <button type="submit" class="btn-primary"><?= t('add_transaction') ?></button>
             </div>
         </form>
         <h3><?= t('transaction_history') ?></h3>

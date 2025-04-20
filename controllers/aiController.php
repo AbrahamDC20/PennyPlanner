@@ -12,7 +12,12 @@ function getSpendingStatistics($userId) {
 }
 
 function predictNextMonthSpending($userId) {
-    // Implementar lógica para predecir gastos basados en datos históricos
-    return rand(100, 1000); // Ejemplo de predicción aleatoria
+    global $conn;
+    $stmt = $conn->prepare("SELECT AVG(amount) as avg_spending FROM transactions WHERE user_id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+    return $result['avg_spending'] * 1.1; // Predicción basada en promedio
 }
 ?>

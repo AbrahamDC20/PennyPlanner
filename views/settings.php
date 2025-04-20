@@ -16,7 +16,6 @@ requireLogin();
                 <option value="friendly" <?= ($_SESSION['response_mode'] ?? 'friendly') === 'friendly' ? 'selected' : '' ?>><?= t('friendly') ?></option>
                 <option value="formal" <?= ($_SESSION['response_mode'] ?? 'friendly') === 'formal' ? 'selected' : '' ?>><?= t('formal') ?></option>
             </select>
-            <!-- Removed theme and font_size options -->
             <button type="submit" name="update_settings"><?= t('update') ?></button>
         </form>
         <p><?= ($_SESSION['response_mode'] ?? 'friendly') === 'friendly' ? t('friendly_mode_message') : t('formal_mode_message') ?></p>

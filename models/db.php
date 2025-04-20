@@ -166,4 +166,13 @@ if (!function_exists('listUsers')) {
         return $users;
     }
 }
+
+// Asignar rol a un usuario
+function assignRole($userId, $role) {
+    global $conn;
+    $stmt = $conn->prepare("UPDATE users SET role = ? WHERE id = ?");
+    $stmt->bind_param("si", $role, $userId);
+    $stmt->execute();
+    $stmt->close();
+}
 ?>

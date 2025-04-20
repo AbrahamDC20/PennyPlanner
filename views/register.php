@@ -14,13 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = t('invalid_csrf_token');
     } else {
         $_SESSION['language'] = $_POST['language'] ?? 'en'; // Guardar idioma seleccionado
-        $username = trim($_POST['username'] ?? '');
+        $username = sanitizeInput($_POST['username'] ?? '');
         $password = trim($_POST['password'] ?? '');
         $confirmPassword = trim($_POST['confirm_password'] ?? '');
-        $firstName = trim($_POST['first_name'] ?? '');
-        $lastName = trim($_POST['last_name'] ?? '');
-        $email = trim($_POST['email'] ?? '');
-        $phone = trim($_POST['phone'] ?? '');
+        $firstName = sanitizeInput($_POST['first_name'] ?? '');
+        $lastName = sanitizeInput($_POST['last_name'] ?? '');
+        $email = sanitizeInput($_POST['email'] ?? '');
+        $phone = sanitizeInput($_POST['phone'] ?? '');
 
         if ($username && $password && $confirmPassword && $firstName && $lastName && $email && $phone) {
             if ($password !== $confirmPassword) {
