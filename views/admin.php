@@ -73,5 +73,8 @@ $friends = getFriends($adminId); // Obtener amigos del administrador
         </script>
         <!-- Agregar más estadísticas aquí -->
     </div>
+    <ul>
+        <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/roles_permissions.php"><?= t('roles_permissions') ?></a></li>
+    </ul>
 </main>
 <?php include 'footer.php'; ?>

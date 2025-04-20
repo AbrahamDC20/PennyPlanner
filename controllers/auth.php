@@ -310,9 +310,9 @@ function checkPermission($userId, $permissionName) {
     global $conn;
     $stmt = $conn->prepare("
         SELECT 1
-        FROM user_roles ur
-        JOIN role_permissions rp ON ur.role_id = rp.role_id
-        JOIN permissions p ON rp.permission_id = p.id
+        FROM user_roles (ur)
+        JOIN role_permissions (rp) ON ur.role_id = rp.role_id
+        JOIN permissions (p) ON rp.permission_id = p.id
         WHERE ur.user_id = ? AND p.name = ?
     ");
     $stmt->bind_param("is", $userId, $permissionName);
@@ -320,6 +320,13 @@ function checkPermission($userId, $permissionName) {
     $result = $stmt->get_result()->fetch_assoc();
     $stmt->close();
     return $result ? true : false;
+}
+
+function requirePermission($permissionName) {
+    if (!checkPermission($_SESSION['user']['id'], $permissionName)) {
+        header('Location: /Website_Technologies_Abraham/Final_Proyect/views/index.php');
+        exit();
+    }
 }
 
 function logAudit($userId, $action) {
