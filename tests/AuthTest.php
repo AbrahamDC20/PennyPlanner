@@ -1,6 +1,8 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/../controllers/auth.php'; // Cambiar a ruta absoluta
+
 class AuthTest extends TestCase {
     public function testRegisterUser() {
         $this->expectNotToPerformAssertions();
@@ -15,7 +17,7 @@ class AuthTest extends TestCase {
 
     public function testRequireLogin() {
         $_SESSION = [];
-        $this->expectException(Exception::class);
+        $this->expectOutputRegex('/Location: .*login\.php/');
         requireLogin();
     }
 }

@@ -84,8 +84,8 @@ $conn->query("
     CREATE INDEX IF NOT EXISTS idx_transactions_date ON transactions(date)
 ");
 
-// Asegurarse de que la cuenta de administrador exista
-ensureAdminAccount();
+// Asegurarse de que la cuenta de administrador exista (llamar explícitamente en lugar de automáticamente)
+// ensureAdminAccount();
 
 // Centralizar configuración de la base de datos
 if (!function_exists('getDBConnection')) {

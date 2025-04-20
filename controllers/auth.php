@@ -1,6 +1,6 @@
 <?php
-require_once '../models/db.php'; // Ruta corregida
-require_once dirname(__DIR__) . '/controllers/tutorialController.php'; // Importar controlador de tutoriales
+require_once __DIR__ . '/../models/db.php'; // Cambiar a ruta absoluta
+require_once __DIR__ . '/tutorialController.php'; // Cambiar a ruta absoluta
 
 // Registrar un nuevo usuario
 function registerUser($username, $password, $firstName, $lastName, $email, $phone) {

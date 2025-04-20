@@ -1,6 +1,8 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
+require_once __DIR__ . '/../controllers/auth.php'; // Cambiar a ruta absoluta
+
 class AdminTest extends TestCase {
     public function testEnsureAdminAccount() {
         $this->expectNotToPerformAssertions();

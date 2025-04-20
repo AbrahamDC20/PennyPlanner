@@ -1937,3 +1937,9 @@
 2025-04-20 16:54:00 - Stored hash: $2y$10$rnf/A0DuJD.WpNCbTqir8.bC5Blioje3MKTJYX92pNYzcATH2MEfi
 2025-04-20 16:54:00 - Password verification result for user Abraham: success
 2025-04-20 16:54:00 - Password verification successful for user: Abraham
+2025-04-20 15:03:20 - Sanitized username: testuser
+2025-04-20 15:03:20 - Provided password (trimmed): password123
+2025-04-20 15:03:20 - User found: {"id":2,"username":"testuser","password_hash":"$2y$12$4vdjwtwwQS9PrVrATdV64unPtI57qIr6tHXnejPDZXeAa90wFV4e.","first_name":"Test","last_name":"User","email":"test@example.com","phone":"123456789","profile_image":null,"role":"user","created_at":"2025-04-20 18:03:20"}
+2025-04-20 15:03:20 - Stored hash: $2y$12$4vdjwtwwQS9PrVrATdV64unPtI57qIr6tHXnejPDZXeAa90wFV4e.
+2025-04-20 15:03:20 - Password verification result for user testuser: success
+2025-04-20 15:03:20 - Password verification successful for user: testuser

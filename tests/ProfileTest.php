@@ -1,6 +1,8 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
+require_once dirname(__DIR__) . '/controllers/profileController.php'; // Incluir el archivo necesario
+
 class ProfileTest extends TestCase {
     public function testUpdateProfileImage() {
         $this->expectNotToPerformAssertions();
