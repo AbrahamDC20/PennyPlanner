@@ -84,4 +84,35 @@ if (!function_exists('listUsers')) {
         return $users;
     }
 }
+
+if (!function_exists('ensureAdminAccount')) {
+    function ensureAdminAccount() {
+        global $conn;
+        try {
+            $stmt = $conn->prepare("SELECT id FROM users WHERE username = 'Abraham' AND role = 'admin'");
+            $stmt->execute();
+            $admin = $stmt->get_result()->fetch_assoc();
+            $stmt->close();
+
+            if (!$admin) {
+                $passwordHash = password_hash('17Del12Del2004', PASSWORD_DEFAULT);
+                $stmtInsert = $conn->prepare("INSERT INTO users (username, password_hash, first_name, last_name, email, phone, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $username = 'Abraham';
+                $firstName = 'Abraham';
+                $lastName = 'Díaz';
+                $email = 'pennyplanner2025@gmail.com';
+                $phone = '722683559';
+                $role = 'admin';
+                $stmtInsert->bind_param("sssssss", $username, $passwordHash, $firstName, $lastName, $email, $phone, $role);
+                $stmtInsert->execute();
+                $stmtInsert->close();
+            }
+        } catch (Exception $e) {
+            logError("Error in ensureAdminAccount: " . $e->getMessage());
+        }
+    }
+}
+
+// Llamar a la función para asegurarse de que la cuenta de administrador exista
+ensureAdminAccount();
 ?>

@@ -20,4 +20,27 @@ function predictNextMonthSpending($userId) {
     $stmt->close();
     return $result['avg_spending'] * 1.1; // Predicción basada en promedio
 }
+
+function generateSpendingRecommendations($userId) {
+    global $conn;
+    $stmt = $conn->prepare("
+        SELECT description, SUM(amount) as total_spent
+        FROM transactions
+        WHERE user_id = ?
+        GROUP BY description
+        ORDER BY total_spent DESC
+        LIMIT 3
+    ");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $recommendations = [];
+
+    while ($row = $result->fetch_assoc()) {
+        $recommendations[] = "Consider reviewing your spending on: " . htmlspecialchars($row['description']) . ".";
+    }
+
+    $stmt->close();
+    return $recommendations;
+}
 ?>

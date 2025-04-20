@@ -35,6 +35,7 @@ function renderLanguageOptions($currentLanguage) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= t('home') ?> - PennyPlanner</title>
     <link rel="stylesheet" href="/Website_Technologies_Abraham/Final_Proyect/assets/styles.css">
+    <script src="/Website_Technologies_Abraham/Final_Proyect/assets/tutorial.js"></script>
 </head>
 <body>
     <div id="loading-indicator" style="display: none;">Loading...</div> <!-- Loading spinner -->
@@ -56,6 +57,9 @@ function renderLanguageOptions($currentLanguage) {
                             <img src="<?= isset($_SESSION['user']['profile_image']) ? '/Website_Technologies_Abraham/Final_Proyect/uploads/' . htmlspecialchars($_SESSION['user']['profile_image']) : '/Website_Technologies_Abraham/Final_Proyect/assets/default-profile.png' ?>" alt="<?= t('profile_image') ?>" class="header-profile-image">
                             <?= htmlspecialchars($_SESSION['user']['username']) ?>
                         </a>
+                    </li>
+                    <li style="margin-right: 20px;">
+                        <a href="/Website_Technologies_Abraham/Final_Proyect/views/tutorial.php" class="btn-primary" style="padding: 8px 15px;"><?= t('start_tutorial') ?></a>
                     </li>
                     <li style="margin-left: auto; display: flex; align-items: center;">
                         <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/logout.php">

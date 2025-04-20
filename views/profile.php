@@ -1,8 +1,10 @@
 <?php
 require '../controllers/auth.php';
 require '../controllers/profileController.php'; // Asegurarse de incluir el controlador
+require '../controllers/aiController.php'; // Incluir el controlador de IA
 session_start();
 requireLogin();
+$recommendations = generateSpendingRecommendations($_SESSION['user']['id']);
 ?>
 
 <?php include 'header.php'; ?>
@@ -78,6 +80,12 @@ requireLogin();
                 <?php $stmt->close(); ?>
             </tbody>
         </table>
+        <h3><?= t('spending_recommendations') ?></h3>
+        <ul>
+            <?php foreach ($recommendations as $recommendation): ?>
+                <li><?= $recommendation ?></li>
+            <?php endforeach; ?>
+        </ul>
     </div>
 </main>
 <?php include 'footer.php'; ?>

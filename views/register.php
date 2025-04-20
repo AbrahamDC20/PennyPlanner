@@ -31,7 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error = t('weak');
             } else {
                 try {
-                    registerUser($username, $password, $firstName, $lastName, $email, $phone);
+                    $defaultProfileImage = 'Penny_PlannerLogo.png'; // Imagen predeterminada
+                    registerUser($username, $password, $firstName, $lastName, $email, $phone, $defaultProfileImage);
                     header('Location: ../views/tutorial.php'); // Redirigir al tutorial
                     exit();
                 } catch (Exception $e) {

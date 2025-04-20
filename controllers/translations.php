@@ -118,6 +118,9 @@ $translations = [
         'friend_request_received' => 'Has recibido una solicitud de amistad.',
         'accept' => 'Aceptar',
         'reject' => 'Rechazar',
+        'spending_recommendations' => 'Recomendaciones de gasto',
+        'start_tutorial' => 'Iniciar Tutorial',
+        'customer_support' => 'Soporte al Cliente',
     ],
     'en' => [
         'welcome' => 'Welcome to Budget Buddy',
@@ -233,6 +236,8 @@ $translations = [
         'friend_request_received' => 'You have received a friend request.',
         'accept' => 'Accept',
         'reject' => 'Reject',
+        'start_tutorial' => 'Start Tutorial',
+        'customer_support' => 'Customer Support',
     ],
     'lt' => [
         'welcome' => 'Sveiki atvykę į Budget Buddy',
@@ -335,6 +340,8 @@ $translations = [
         'user_not_found' => 'Vartotojas nerastas',
         'your_friends' => 'Jūsų Draugai',
         'no_friends' => 'Jūs dar neturite draugų.',
+        'start_tutorial' => 'Pradėti Pamoką',
+        'customer_support' => 'Klientų Aptarnavimas',
     ],
     'fr' => [
         'welcome' => 'Bienvenue sur Budget Buddy',
