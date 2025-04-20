@@ -115,6 +115,9 @@ $translations = [
         'user_not_found' => 'Usuario no encontrado',
         'your_friends' => 'Tus Amigos',
         'no_friends' => 'No tienes amigos aún.',
+        'friend_request_received' => 'Has recibido una solicitud de amistad.',
+        'accept' => 'Aceptar',
+        'reject' => 'Rechazar',
     ],
     'en' => [
         'welcome' => 'Welcome to Budget Buddy',
@@ -227,6 +230,9 @@ $translations = [
         'user_not_found' => 'User not found',
         'your_friends' => 'Your Friends',
         'no_friends' => 'You have no friends yet.',
+        'friend_request_received' => 'You have received a friend request.',
+        'accept' => 'Accept',
+        'reject' => 'Reject',
     ],
     'lt' => [
         'welcome' => 'Sveiki atvykę į Budget Buddy',

@@ -16,7 +16,13 @@ $notifications = getNotifications($userId);
             <?php foreach ($notifications as $notification): ?>
                 <li class="<?= $notification['is_read'] ? 'read' : 'unread' ?>">
                     <?= htmlspecialchars($notification['message']) ?> - <?= htmlspecialchars($notification['created_at']) ?>
-                    <?php if (!$notification['is_read']): ?>
+                    <?php if ($notification['type'] === 'friend_request'): ?>
+                        <form method="POST" action="../routes/respond_friend_request.php" style="display: inline;">
+                            <input type="hidden" name="notification_id" value="<?= $notification['id'] ?>">
+                            <button type="submit" name="response" value="accept"><?= t('accept') ?></button>
+                            <button type="submit" name="response" value="reject"><?= t('reject') ?></button>
+                        </form>
+                    <?php elseif (!$notification['is_read']): ?>
                         <form method="POST" action="../routes/mark_notification.php" style="display: inline;">
                             <input type="hidden" name="notification_id" value="<?= $notification['id'] ?>">
                             <button type="submit"><?= t('mark_as_read') ?></button>
