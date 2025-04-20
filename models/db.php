@@ -91,12 +91,6 @@ function ensureAdminAccount() {
 function ensureDatabaseSchema() {
     global $conn;
 
-    // Verificar si la columna 2fa_code existe en la tabla users
-    $result = $conn->query("SHOW COLUMNS FROM users LIKE '2fa_code'");
-    if ($result->num_rows === 0) {
-        $conn->query("ALTER TABLE users ADD COLUMN 2fa_code VARCHAR(6) DEFAULT NULL");
-    }
-
     // Verificar si la columna 2fa_enabled existe en la tabla users
     $result = $conn->query("SHOW COLUMNS FROM users LIKE '2fa_enabled'");
     if ($result->num_rows === 0) {
