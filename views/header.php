@@ -8,6 +8,27 @@ require_once dirname(__DIR__) . '/controllers/translations.php';
 if (!isset($_SESSION['language'])) {
     $_SESSION['language'] = 'es'; // Default to Spanish
 }
+
+function renderLanguageOptions($currentLanguage) {
+    $languages = [
+        'es' => ['Español', '/Website_Technologies_Abraham/Final_Proyect/images/España.jpeg'],
+        'en' => ['English', '/Website_Technologies_Abraham/Final_Proyect/images/UK.png'],
+        'lt' => ['Lietuvių', '/Website_Technologies_Abraham/Final_Proyect/images/Lituania.png']
+    ];
+
+    foreach ($languages as $code => [$label, $flag]) {
+        if ($currentLanguage !== $code) {
+            echo '<li>
+                <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
+                    <button type="submit" name="language" value="' . htmlspecialchars($code) . '" class="dropdown-item">
+                        <img src="' . htmlspecialchars($flag) . '" alt="' . htmlspecialchars($label) . '" class="flag-icon">
+                        ' . htmlspecialchars($label) . '
+                    </button>
+                </form>
+            </li>';
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($_SESSION['language'] ?? 'es') ?>">
@@ -26,13 +47,21 @@ if (!isset($_SESSION['language'])) {
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/index.php"><?= t('home') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/transactions.php"><?= t('transactions') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/settings.php"><?= t('settings') ?></a></li>
+                <li class="dropdown" style="margin-right: 20px;">
+                    <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('language-menu')">
+                        <?= t('language') ?>
+                    </button>
+                    <ul id="language-menu" class="dropdown-menu" style="width: 150px;"> <!-- Ajustar tamaño -->
+                        <?php renderLanguageOptions($_SESSION['language']); ?>
+                    </ul>
+                </li>
                 <?php if (isset($_SESSION['user'])): ?>
                     <li class="dropdown" style="margin-right: 20px;">
                         <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('user-menu')">
                             <img src="<?= isset($_SESSION['user']['profile_image']) ? '/Website_Technologies_Abraham/Final_Proyect/uploads/' . htmlspecialchars($_SESSION['user']['profile_image']) : '/Website_Technologies_Abraham/Final_Proyect/assets/default-profile.png' ?>" alt="<?= t('profile_image') ?>" class="header-profile-image">
                             <?= htmlspecialchars($_SESSION['user']['username']) ?>
                         </button>
-                        <ul id="user-menu" class="dropdown-menu">
+                        <ul id="user-menu" class="dropdown-menu" style="width: 150px;"> <!-- Ajustar tamaño -->
                             <li>
                                 <label class="switch" for="dark-mode-toggle">
                                     <?= t('dark_mode') ?>
@@ -41,82 +70,7 @@ if (!isset($_SESSION['language'])) {
                                 </label>
                             </li>
                             <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/profile.php"><?= t('profile') ?></a></li>
-                            <li class="dropdown">
-                                <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('language-menu')">
-                                    <?= t('language') ?>
-                                </button>
-                                <ul id="language-menu" class="dropdown-menu">
-                                    <?php if ($_SESSION['language'] !== 'es'): ?>
-                                        <li>
-                                            <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
-                                                <button type="submit" name="language" value="es" class="dropdown-item">
-                                                    <img src="/Website_Technologies_Abraham/Final_Proyect/images/España.jpeg" alt="Español" class="flag-icon">
-                                                    <?= t('spanish') ?>
-                                                </button>
-                                            </form>
-                                        </li>
-                                    <?php endif; ?>
-                                    <?php if ($_SESSION['language'] !== 'en'): ?>
-                                        <li>
-                                            <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
-                                                <button type="submit" name="language" value="en" class="dropdown-item">
-                                                    <img src="/Website_Technologies_Abraham/Final_Proyect/images/UK.png" alt="English" class="flag-icon">
-                                                    <?= t('english') ?>
-                                                </button>
-                                            </form>
-                                        </li>
-                                    <?php endif; ?>
-                                    <?php if ($_SESSION['language'] !== 'lt'): ?>
-                                        <li>
-                                            <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
-                                                <button type="submit" name="language" value="lt" class="dropdown-item">
-                                                    <img src="/Website_Technologies_Abraham/Final_Proyect/images/Lituania.png" alt="Lituano" class="flag-icon">
-                                                    <?= t('lithuanian') ?>
-                                                </button>
-                                            </form>
-                                        </li>
-                                    <?php endif; ?>
-                                </ul>
-                            </li>
                             <li><a href="/Website_Technologies_Abraham/Final_Proyect/routes/logout.php"><?= t('logout') ?></a></li>
-                        </ul>
-                    </li>
-                <?php else: ?>
-                    <li class="dropdown" style="margin-right: 20px;">
-                        <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('language-menu')">
-                            <?= t('language') ?>
-                        </button>
-                        <ul id="language-menu" class="dropdown-menu">
-                            <?php if ($_SESSION['language'] !== 'es'): ?>
-                                <li>
-                                    <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
-                                        <button type="submit" name="language" value="es" class="dropdown-item">
-                                            <img src="/Website_Technologies_Abraham/Final_Proyect/images/España.jpeg" alt="Español" class="flag-icon">
-                                            <?= t('spanish') ?>
-                                        </button>
-                                    </form>
-                                </li>
-                            <?php endif; ?>
-                            <?php if ($_SESSION['language'] !== 'en'): ?>
-                                <li>
-                                    <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
-                                        <button type="submit" name="language" value="en" class="dropdown-item">
-                                            <img src="/Website_Technologies_Abraham/Final_Proyect/images/UK.png" alt="English" class="flag-icon">
-                                            <?= t('english') ?>
-                                        </button>
-                                    </form>
-                                </li>
-                            <?php endif; ?>
-                            <?php if ($_SESSION['language'] !== 'lt'): ?>
-                                <li>
-                                    <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
-                                        <button type="submit" name="language" value="lt" class="dropdown-item">
-                                            <img src="/Website_Technologies_Abraham/Final_Proyect/images/Lituania.png" alt="Lituano" class="flag-icon">
-                                            <?= t('lithuanian') ?>
-                                        </button>
-                                    </form>
-                                </li>
-                            <?php endif; ?>
                         </ul>
                     </li>
                 <?php endif; ?>
@@ -131,8 +85,24 @@ if (!isset($_SESSION['language'])) {
     <script>
         function toggleDropdown(menuId) {
             const menu = document.getElementById(menuId);
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            const isActive = menu.classList.contains('active');
+            document.querySelectorAll('.dropdown-menu').forEach((dropdown) => {
+                dropdown.classList.remove('active');
+            });
+            if (!isActive) {
+                menu.classList.add('active');
+            }
         }
+
+        // Cerrar los menús desplegables al hacer clic fuera de ellos
+        document.addEventListener('click', (event) => {
+            const dropdowns = document.querySelectorAll('.dropdown-menu');
+            dropdowns.forEach((dropdown) => {
+                if (!dropdown.contains(event.target) && !dropdown.previousElementSibling.contains(event.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
 
         // Notification system
         function showNotification(message, type = 'success') {

@@ -48,33 +48,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php include 'header.php'; ?>
-<main>
+<main style="margin-top: 80px; overflow-y: auto; max-height: calc(100vh - 80px);">
     <div class="register-container">
-        <h2><?= t('register') ?></h2>
-        <form method="POST" id="register-form">
+        <h2 style="text-align: center;"><?= t('register') ?></h2>
+        <form method="POST" id="register-form" class="form-two-columns" style="max-width: 800px; margin: 0 auto;"> <!-- Centrar y ajustar ancho -->
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-            <label for="language"><?= t('language') ?>:</label>
-            <select id="language" name="language" required>
-                <option value="en" <?= ($_SESSION['language'] ?? 'en') === 'en' ? 'selected' : '' ?>><?= t('english') ?></option>
-                <option value="es" <?= ($_SESSION['language'] ?? 'en') === 'es' ? 'selected' : '' ?>><?= t('spanish') ?></option>
-                <option value="lt" <?= ($_SESSION['language'] ?? 'en') === 'lt' ? 'selected' : '' ?>><?= t('lithuanian') ?></option>
-            </select>
-            <label for="username"><?= t('username') ?>:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password"><?= t('password') ?>:</label>
-            <input type="password" id="password" name="password" required>
-            <label for="confirm_password"><?= t('confirm_password') ?>:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
-            <div id="password-strength" class="password-strength"></div>
-            <label for="first_name"><?= t('name') ?>:</label>
-            <input type="text" id="first_name" name="first_name" required>
-            <label for="last_name"><?= t('surname') ?>:</label>
-            <input type="text" id="last_name" name="last_name" required>
-            <label for="email"><?= t('email') ?>:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="phone"><?= t('phone') ?>:</label>
-            <input type="text" id="phone" name="phone" required>
-            <button type="submit"><?= t('register') ?></button>
+            <div>
+                <label for="first_name"><?= t('name') ?>:</label>
+                <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div>
+                <label for="username"><?= t('username') ?>:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div>
+                <label for="last_name"><?= t('surname') ?>:</label>
+                <input type="text" id="last_name" name="last_name" required>
+            </div>
+            <div>
+                <label for="password"><?= t('password') ?>:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div>
+                <label for="email"><?= t('email') ?>:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="confirm_password"><?= t('confirm_password') ?>:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <div>
+                <label for="phone"><?= t('phone') ?>:</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div style="text-align: center;"> <!-- Botón en la segunda columna -->
+                <button type="submit" class="btn-primary" style="width: 100%;"><?= t('register') ?></button>
+            </div>
         </form>
         <?php if (isset($error)): ?>
             <p class="error"><?= htmlspecialchars($error) ?></p>

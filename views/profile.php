@@ -10,7 +10,7 @@ requireLogin();
         <h2><?= t('profile') ?></h2>
         <div class="profile-header">
             <div class="profile-image-container">
-                <img src="<?= isset($_SESSION['user']['profile_image']) ? '/Website_Technologies_Abraham/Final_Proyect/uploads/' . htmlspecialchars($_SESSION['user']['profile_image']) : '/Website_Technologies_Abraham/Final_Proyect/assets/default-profile.png' ?>" alt="<?= t('profile_image') ?>" class="profile-image">
+                <img src="<?= isset($_SESSION['user']['profile_image']) ? '/Website_Technologies_Abraham/Final_Proyect/uploads/' . htmlspecialchars($_SESSION['user']['profile_image']) : '/Website_Technologies_Abraham/Final_Proyect/assets/default-profile.png' ?>" alt="<?= t('profile_image') ?>" class="profile-image" style="width: 150px; height: 150px; object-fit: cover;"> <!-- Ajustar tamaño -->
             </div>
             <div class="profile-username">
                 <h3><?= htmlspecialchars($_SESSION['user']['username']) ?></h3>

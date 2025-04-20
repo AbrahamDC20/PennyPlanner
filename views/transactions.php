@@ -9,10 +9,10 @@ $transactions = getTransactions();
 ?>
 
 <?php include 'header.php'; ?>
-<main>
+<main style="margin-top: 80px;"> <!-- Ajustar margen superior -->
     <div class="section">
         <h2><?= t('transactions') ?></h2>
-        <form method="POST" action="transactions.php" class="styled-form">
+        <form method="POST" action="../routes/add_transaction.php" class="styled-form"> <!-- Corregir acción -->
             <div class="form-group">
                 <label for="description"><?= t('description') ?>:</label>
                 <input type="text" id="description" name="description" placeholder="<?= t('description') ?>" required>

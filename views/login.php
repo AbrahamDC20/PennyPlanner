@@ -8,10 +8,10 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <?php include 'header.php'; ?>
 
-<main>
+<main style="margin-top: 80px;"> <!-- Ajustar margen superior -->
     <div class="login-container">
         <form method="post" action="../routes/login.php" class="login-form">
-            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '') ?>"> <!-- Evitar error -->
             <h2><?= t('login') ?></h2>
             <label for="username"><?= t('username') ?>:</label>
             <input type="text" id="username" name="username" required>
@@ -21,10 +21,12 @@ if (session_status() === PHP_SESSION_NONE) {
                 <p class="error"><?= htmlspecialchars($_SESSION['error']) ?></p>
                 <?php unset($_SESSION['error']); ?>
             <?php endif; ?>
-            <button type="submit"><?= t('login') ?></button>
+            <button type="submit" style="width: 100%;"><?= t('login') ?></button> <!-- Botón ajustado -->
         </form>
-        <p><a href="/Website_Technologies_Abraham/Final_Proyect/views/register.php"><?= t('register') ?></a></p>
-        <p><a href="/Website_Technologies_Abraham/Final_Proyect/views/admin_login.php"><?= t('login') ?> (<?= t('admin') ?>)</a></p>
+        <div style="text-align: center; margin-top: 10px;"> <!-- Centrar enlaces -->
+            <p><a href="/Website_Technologies_Abraham/Final_Proyect/views/register.php"><?= t('register') ?></a></p>
+            <p><a href="/Website_Technologies_Abraham/Final_Proyect/views/admin_login.php"><?= t('login') ?> (<?= t('admin') ?>)</a></p>
+        </div>
     </div>
 </main>
 

@@ -1,55 +1,116 @@
-/* Navbar fija */
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000; /* Texto negro */
+    font-family: Arial, sans-serif;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff; /* Texto blanco */
+}
+
+body.dark-mode header, body.dark-mode footer {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode table th, body.dark-mode table td {
+    color: #ffffff;
+}
+
+body.dark-mode input, 
+body.dark-mode select, 
+body.dark-mode button, 
+body.dark-mode label {
+    color: #ffffff; /* Texto blanco para mejor visibilidad */
+    background-color: #333333; /* Fondo oscuro para contraste */
+    border-color: #555555; /* Bordes más visibles */
+}
+
+body.dark-mode .btn-primary {
+    background-color: #0056b3; /* Azul más oscuro */
+    color: #ffffff; /* Texto blanco */
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #003d80; /* Azul más oscuro al pasar el cursor */
+}
+
+/* Header */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 60px; /* Explicitly set the height */
-    background-color: #007bff; /* Default blue background */
+    height: 60px;
+    background-color: #007bff;
     color: white;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-}
-
-body, html {
-    margin: 0;
-    padding: 0;
+    padding: 0 20px; /* Remove vertical padding */
+    display: flex;
+    align-items: center; /* Center items vertically */
 }
 
 header nav ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-    margin: 0;
     list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
-header nav ul li a {
+header nav ul li a, header nav ul li button {
     color: white;
     text-decoration: none;
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-header nav ul li a:hover {
+header nav ul li a:hover, header nav ul li button:hover {
     background-color: #0056b3;
 }
 
-/* Botones */
+/* Profile image adjustments */
+.header-profile-image {
+    width: 40px; /* Set consistent width */
+    height: 40px; /* Set consistent height */
+    border-radius: 50%; /* Ensure circular shape */
+    object-fit: cover; /* Ensure the image fits within the container */
+    border: 2px solid white; /* Optional: Add a border for better visibility */
+}
+
+/* Buttons */
 button, .btn {
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
+    padding: 8px 15px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    text-align: center;
-    display: inline-block;
 }
 
 button:hover, .btn:hover {
@@ -61,11 +122,11 @@ button:active, .btn:active {
     transform: scale(0.95);
 }
 
-/* Formularios */
+/* Forms */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
     max-width: 500px;
     margin: 0 auto;
 }
@@ -73,7 +134,6 @@ form {
 form label {
     font-weight: bold;
     color: #333;
-    margin-bottom: 5px;
 }
 
 form input, form select, form button {
@@ -82,7 +142,6 @@ form input, form select, form button {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    box-sizing: border-box;
 }
 
 form input:focus, form select:focus, form button:focus {
@@ -90,992 +149,39 @@ form input:focus, form select:focus, form button:focus {
     outline: none;
 }
 
-form button {
-    background-color: #007bff;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Estilo para formularios de dos columnas */
+.form-two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 20px; /* Espaciado entre columnas y filas */
 }
 
-form button:hover {
-    background-color: #0056b3;
-}
-
-/* Ajustar el botón de actualizar en el perfil */
-form button {
-    margin-top: 20px;
-    padding: 10px 20px; /* Ajustar el tamaño del botón */
-    max-width: 200px; /* Limitar el ancho del botón */
-    align-self: center; /* Centrar el botón horizontalmente */
-}
-
-/* Menú general */
-.menu {
+.form-two-columns div {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #007bff;
-    list-style: none;
-    margin: 0;
+    flex-direction: column;
 }
 
-.menu li {
-    position: relative;
+.form-two-columns label {
+    grid-column: span 2; /* Etiquetas ocupan ambas columnas */
 }
 
-.menu li a, .menu li button {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+.form-two-columns button {
+    grid-column: span 2; /* Botón ocupa ambas columnas */
+    justify-self: center; /* Centrar botón */
 }
 
-.menu li a:hover, .menu li button:hover {
-    background-color: #0056b3;
-}
-
-.section h2 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-/* Adjust margin for the profile section */
+/* Sections */
 .section {
-    margin: 20px auto;
-    padding: 20px;
+    margin: 10px auto;
+    padding: 15px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 800px;
 }
 
-.section {
-    animation: fadeIn 0.5s ease-in-out;
-    max-width: 800px; /* Limit the width for better readability */
-    margin: 0 auto; /* Center the section horizontally */
-    padding: 20px; /* Add padding for spacing */
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-
-/* Remove yellow box styling for settings.php */
-.section.friendly, .section.formal {
-    background-color: transparent;
-    border: none;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Página responsiva */
-@media (max-width: 768px) {
-    header nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .container {
-        width: 95%;
-    }
-
-    .menu {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .menu li {
-        width: 100%;
-    }
-
-    .menu li a, .menu li button {
-        width: 100%;
-        text-align: left;
-    }
-
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        padding: 0;
-    }
-
-    .dropdown-menu li button {
-        padding: 10px;
-    }
-
-    .register-container {
-        padding: 15px;
-    }
-
-    button {
-        max-width: 100%; /* Allow buttons to take full width on smaller screens */
-    }
-
-    .profile-header {
-        flex-direction: column; /* Stack image and username vertically */
-        gap: 10px;
-    }
-
-    .profile-image-container {
-        width: 100px;
-        height: 100px;
-    }
-
-    form input, form button {
-        max-width: 100%; /* Allow full width on smaller screens */
-    }
-}
-
-@media (max-width: 400px) {
-    h1 {
-        font-size: 1.5rem;
-    }
-    .container {
-        padding: 15px;
-    }
-
-    .flag-icon {
-        width: 16px;
-        height: 16px;
-    }
-
-    .menu li a, .menu li button {
-        font-size: 14px;
-        padding: 8px 10px;
-    }
-
-    .profile-image-container {
-        width: 80px;
-        height: 80px;
-    }
-
-    h1, h2 {
-        font-size: 1.5rem; /* Adjust font size for smaller screens */
-    }
-
-    form input, form button {
-        max-width: 100%; /* Ensure full width on very small screens */
-    }
-}
-
-/* Botones adicionales */
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
-/* Estilos para centrar el formulario */
-.login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 120px); /* Ajustar para no superponer el header y footer */
-    padding: 20px;
-}
-
-.login-form {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-}
-
-.login-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.login-form label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.login-form input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.login-form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.login-form button:hover {
-    background-color: #0056b3;
-}
-
-.login-form .error {
-    color: red;
-    font-size: 0.9em;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-select, button {
-    height: 40px; /* Ensure consistent height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px; /* Match the input field style */
-}
-
-/* Menú desplegable */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-right: 20px; /* Alinear con el margen del botón "Inicio" */
-}
-
-/* Dropdown toggle button alignment */
-.dropdown-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px; /* Match other menu items */
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 20px; /* Desplazar hacia la izquierda */
-}
-
-.dropdown-toggle:hover {
-    background-color: #0056b3;
-}
-
-/* Dropdown menu adjustments */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: calc(100% + 5px); /* Espaciado debajo del botón */
-    left: 0; /* Alinear con el botón */
-    background-color: #ffffff; /* Fondo claro */
-    color: #333333; /* Texto oscuro */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 5px 0;
-    border-radius: 4px;
-    z-index: 1000;
-    min-width: 150px; /* Ancho consistente */
-    margin-top: 5px; /* Add spacing below dropdown toggle */
-}
-
-.dropdown:hover .dropdown-menu,
-.dropdown-menu.show {
-    display: block;
-}
-
-.dropdown-menu li {
-    list-style: none;
-    margin: 0;
-}
-
-.dropdown-menu li button {
-    background: none;
-    border: none;
-    color: #333;
-    font: inherit;
-    cursor: pointer;
-    text-align: left;
-    display: block;
-    width: 100%;
-    padding: 8px 10px;
-}
-
-.dropdown-menu li button:hover {
-    background-color: #f1f1f1;
-}
-
-/* Ensure buttons are visible in light mode */
-.dropdown-menu li a {
-    color: #333333;
-}
-
-.dropdown-menu li a:hover {
-    background-color: #f1f1f1;
-    color: #000000;
-}
-
-/* Estilo para opciones de idioma */
-.language-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 15px;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #333;
-    background: none;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-}
-
-.language-option:hover {
-    background-color: #f1f1f1;
-    border-radius: 4px;
-}
-
-/* Ajustes para el modo oscuro */
-body.dark-mode .language-option:hover {
-    background-color: #333333;
-}
-
-/* Flag icon adjustments */
-.flag-icon {
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* Ajustar estilo de las opciones del menú */
-.dropdown-menu li a, .dropdown-menu li label {
-    display: block;
-    padding: 10px 15px;
-    color: #ffffff; /* Texto blanco para visibilidad */
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.dropdown-menu li a:hover, .dropdown-menu li label:hover {
-    background-color: #0056b3;
-}
-
-/* Ensure dropdown items match the style of other buttons */
-.dropdown-item {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    padding: 10px 15px;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #333;
-    background: none;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-    width: 100%;
-}
-
-.dropdown-item:hover {
-    background-color: #f1f1f1;
-    border-radius: 4px;
-}
-
-/* Hacer que toda la etiqueta del modo oscuro sea interactiva */
-.switch {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-}
-
-/* Ajustar visibilidad en modo claro */
-body {
-    background-color: #ffffff; /* Fondo blanco */
-    color: #000000; /* Texto negro */
-}
-
-body.dark-mode {
-    background-color: #121212; /* Fondo oscuro */
-    color: #ffffff; /* Texto blanco */
-}
-
-body.dark-mode .dropdown-menu li a, 
-body.dark-mode .dropdown-menu li label {
-    color: #ffffff; /* Texto blanco en modo oscuro */
-}
-
-body .dropdown-menu li a, 
-body .dropdown-menu li label {
-    color: #000000; /* Texto negro en modo claro */
-}
-
-/* Dark mode adjustments */
-body.dark-mode .dropdown-menu {
-    background-color: #1e1e1e; /* Dark mode background */
-    color: #ffffff; /* Dark mode text color */
-}
-
-body.dark-mode .dropdown-menu li button {
-    color: #ffffff;
-}
-
-body.dark-mode .dropdown-menu li button:hover {
-    background-color: #333333;
-    color: #ffffff; /* Ensure dropdown menu text is visible on hover */
-}
-
-/* Footer */
-footer.footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #007bff;
-    color: white;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Estilos para el modo oscuro */
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-}
-
-body.dark-mode a {
-    color: #ffffff;
-}
-
-body.dark-mode .section {
-    background-color: #121212; /* Match the dark mode body background */
-    color: #ffffff; /* White text for better readability */
-    border: none; /* Remove any borders for consistency */
-}
-
-body.dark-mode .section h2 {
-    color: #ffffff;
-}
-
-body.dark-mode .login-form {
-    background-color: #121212; /* Match the dark mode body background */
-    color: #ffffff; /* White text for better readability */
-    border: none; /* Remove any borders for consistency */
-}
-
-body.dark-mode .login-form label,
-body.dark-mode .login-form input {
-    color: #ffffff; /* White text for labels and inputs */
-}
-
-body.dark-mode .login-form input {
-    background-color: #ffffff; /* White background for inputs */
-    color: #000000; /* Black text for better readability */
-    border: 1px solid #555555; /* Subtle border for inputs */
-}
-
-body.dark-mode .login-form button {
-    background-color: #007bff;
-    color: #ffffff;
-}
-
-body.dark-mode .dropdown-menu {
-    background-color: #121212;
-    color: #ffffff;
-    border: none;
-}
-
-body.dark-mode .dropdown-menu li a:hover {
-    background-color: #333333;
-}
-
-/* Ajustar el botón del nombre de usuario */
-.user-menu-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 15px;
-    font-weight: bold;
-    font-size: 1rem;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.user-menu-button:hover {
-    background-color: #0056b3;
-}
-
-/* Márgenes laterales para el contenido principal */
-main {
-    margin-top: 10px; /* Establecer un margen uniforme respecto al header */
-    max-width: 1200px; /* Limit the width for better readability */
-    padding: 20px; /* Add padding for spacing */
-    box-sizing: border-box; /* Include padding in width calculation */
-}
-
-/* Ocultar el número "2" */
-.language-label::after {
-    content: none;
-}
-
-/* Ajustar estilo del texto "Idioma" */
-.language-label {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    color: inherit;
-}
-
-/* Dark mode adjustments for header and footer */
-body.dark-mode header {
-    background-color: #ffffff; /* White background */
-    color: #000000; /* Black text */
-    border-bottom: 1px solid #e0e0e0; /* Add a subtle border for separation */
-    box-shadow: none; /* Remove shadow for a cleaner look */
-}
-
-body.dark-mode header nav {
-    background-color: #ffffff; /* Ensure nav matches header background */
-}
-
-body.dark-mode footer.footer {
-    background-color: #ffffff; /* White background */
-    color: #000000; /* Black text */
-}
-
-body.dark-mode header nav ul {
-    background-color: #ffffff; /* Ensure the menu background matches the header */
-}
-
-body.dark-mode header nav ul li a {
-    color: #000000; /* Black text for links */
-}
-
-body.dark-mode header nav ul li a:hover {
-    background-color: #e0e0e0; /* Light gray hover effect */
-}
-
-body.dark-mode header nav ul li a,
-body.dark-mode .user-menu-button {
-    color: #000000; /* Black text for links and buttons */
-}
-
-body.dark-mode header nav ul li a:hover,
-body.dark-mode .user-menu-button:hover {
-    background-color: #e0e0e0; /* Light gray hover effect */
-}
-
-/* Consistent margins for registration page */
-.register-container {
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9; /* Light background */
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px; /* Limit the width for better visibility */
-    box-sizing: border-box;
-    margin-bottom: 100px; /* Add space between the form and the footer */
-}
-
-body.dark-mode .register-container {
-    background-color: #121212; /* Match the dark mode body background */
-    color: #ffffff; /* White text for better readability */
-    border: none; /* Remove any borders for consistency */
-    margin-bottom: 100px;
-}
-
-body.dark-mode .login-form,
-body.dark-mode .register-container,
-body.dark-mode .section,
-body.dark-mode .reset-password-container {
-    background-color: #121212; /* Match the dark mode body background */
-    color: #ffffff; /* White text for better readability */
-    border: none; /* Remove any borders for consistency */
-}
-
-body.dark-mode .dropdown-menu {
-    background-color: #121212; /* Match the dark mode body background */
-    color: #ffffff; /* White text for better readability */
-    border: none;
-}
-
-/* Notification styles */
-.notification {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    padding: 15px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    z-index: 10000;
-    color: white;
-    display: none;
-}
-
-.notification.success {
-    background-color: #28a745;
-}
-
-.notification.error {
-    background-color: #dc3545;
-}
-
-/* Loading spinner */
-#loading-indicator {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.5rem;
-    color: #007bff;
-    z-index: 10000;
-}
-
-/* Accessibility improvements */
-button:focus, a:focus {
-    outline: 2px solid #0056b3;
-    outline-offset: 2px;
-}
-
-/* Estilos específicos para la página de cambio de contraseña */
-.reset-password-container {
-    margin: 20px;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 50px auto;
-}
-
-.reset-password-container h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.reset-password-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.reset-password-container label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-}
-
-.reset-password-container input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.reset-password-container button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.reset-password-container button:hover {
-    background-color: #0056b3;
-}
-
-.reset-password-container .error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.reset-password-container .success {
-    color: green;
-    font-size: 0.9em;
-    margin-top: 10px;
-    text-align: center;
-}
-
-/* Estilos para el indicador de fortaleza de contraseña */
-.password-strength {
-    font-weight: bold;
-    margin-top: -10px;
-    margin-bottom: 10px;
-}
-
-/* Estilos para el perfil */
-.profile-header {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    gap: 15px; /* Adjust spacing between image and text */
-    justify-content: flex-start; /* Align content to the left */
-    margin-bottom: 20px; /* Add spacing below the header */
-}
-
-.profile-image-container {
-    width: 50px; /* Adjust size to match text height */
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid #007bff; /* Border for better visibility */
-    flex-shrink: 0; /* Prevent shrinking of the image */
-}
-
-.profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image covers the container */
-}
-
-.profile-username h3 {
-    margin: 0;
-    font-size: 1.2rem; /* Adjust font size for better alignment */
-    color: #333; /* Ensure text is readable */
-}
-
-/* Adjust the header profile image size */
-.header-profile-image {
-    width: 40px; /* Set the width to the requested size */
-    height: 40px; /* Set the height to the requested size */
-    border-radius: 50%; /* Ensure the image is circular */
-    object-fit: cover; /* Ensure the image fits within the container */
-    border: 2px solid #ffffff; /* Optional: Add a border for better visibility */
-}
-
-/* Style the form for better alignment */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Add spacing between form elements */
-}
-
-form label {
-    font-weight: bold;
-    color: #333;
-}
-
-form input, form button {
-    width: 100%; /* Ensure inputs and buttons take full width */
-    max-width: 500px; /* Limit width for better alignment */
-    margin: 0 auto; /* Center the elements */
-}
-
-form button {
-    margin-top: 20px; /* Add spacing above the button */
-}
-
-/* Alinear los elementos en la sección de gestiones */
-.section form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.section form div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.section form label {
-    flex: 0 0 150px; /* Ancho fijo para las etiquetas */
-    text-align: right; /* Alinear texto a la derecha */
-}
-
-/* Alinear los textos al lado de los recuadros */
-.section form input,
-.section form select {
-    flex: 1; /* Hacer que los recuadros ocupen el espacio restante */
-}
-
-/* Ajustar el botón de agregar transacción */
-.section form button {
-    flex: 0 0 auto; /* Evitar que el botón se estire */
-    padding: 10px 20px;
-}
-
-/* Ajustar el diseño del selector de divisa y el botón */
-.section form div {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    gap: 10px; /* Add spacing between elements */
-    flex-wrap: nowrap; /* Prevent wrapping */
-}
-
-.section form select {
-    flex: 0 0 120px; /* Reduce the width of the select box */
-    padding: 5px;
-}
-
-.section form button {
-    flex: 0 0 auto; /* Prevent the button from stretching */
-    padding: 10px 20px;
-}
-
-/* Estilos para el tutorial */
-.tutorial-container {
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    text-align: center;
-}
-
-.tutorial-container h1 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.tutorial-container ol {
-    text-align: left;
-    margin: 20px 0;
-    padding-left: 20px;
-}
-
-.tutorial-container button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.tutorial-container button:hover {
-    background-color: #0056b3;
-}
-
-/* Estilos para la página de documentación */
-.documentation-container {
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-}
-
-.documentation-container h1, .documentation-container h2 {
-    color: #333;
-}
-
-.documentation-container p {
-    color: #555;
-    line-height: 1.6;
-}
-
-/* Asegurar que las etiquetas sean visibles en modo oscuro */
-body.dark-mode label {
-    color: #ffffff !important; /* Forzar el color blanco para las etiquetas */
-}
-
-body.dark-mode select {
-    color: #ffffff; /* Asegurar que el texto de los select sea blanco */
-    background-color: #333333; /* Fondo oscuro para select */
-}
-
-body.dark-mode option {
-    color: #000000; /* Texto negro para las opciones desplegables */
-    background-color: #ffffff; /* Fondo blanco para opciones */
-}
-
-body.dark-mode label,
-body.dark-mode input,
-body.dark-mode select,
-body.dark-mode textarea {
-    color: #ffffff; /* Cambiar el color del texto a blanco */
-}
-
-body.dark-mode input,
-body.dark-mode select,
-body.dark-mode textarea {
-    background-color: #333333; /* Fondo oscuro para campos de entrada */
-    border: 1px solid #555555; /* Borde sutil para inputs */
-}
-
-body.dark-mode button {
-    background-color: #0056b3; /* Fondo azul oscuro para botones */
-    color: #ffffff; /* Texto blanco */
-}
-
-/* Asegurar que las etiquetas y textos sean visibles en modo oscuro */
-body.dark-mode label,
-body.dark-mode h3,
-body.dark-mode .profile-username h3,
-body.dark-mode .section h2,
-body.dark-mode .section h3 {
-    color: #ffffff; /* Cambiar el color del texto a blanco */
-}
-
-body.dark-mode input,
-body.dark-mode select,
-body.dark-mode textarea {
-    background-color: #333333; /* Fondo oscuro para campos de entrada */
-    color: #ffffff; /* Texto blanco */
-    border: 1px solid #555555; /* Borde sutil para inputs */
-}
-
-body.dark-mode input::placeholder,
-body.dark-mode select option {
-    color: #cccccc; /* Color gris claro para los placeholders */
-}
-
-/* Botón de exportación */
-a.btn {
-    text-decoration: none;
-    margin: 10px 0;
-    display: inline-block;
-    text-align: center;
-}
-
-/* Espaciado entre elementos */
 .section h2, .section h3 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     color: #333;
     text-align: center;
 }
@@ -1086,29 +192,11 @@ a.btn {
 }
 
 .section ul li {
-    padding: 10px;
+    padding: 5px;
     border-bottom: 1px solid #ddd;
 }
 
-/* Ajustar el diseño del formulario de filtros */
-form[method="GET"] {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-form[method="GET"] input, form[method="GET"] select {
-    flex: 1;
-    min-width: 200px;
-}
-
-form[method="GET"] button {
-    flex: 0 0 auto;
-}
-
-/* Mejorar la tabla de transacciones */
+/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -1116,7 +204,7 @@ table {
 }
 
 table th, table td {
-    padding: 10px;
+    padding: 8px;
     text-align: left;
     border: 1px solid #ddd;
 }
@@ -1131,81 +219,185 @@ table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Estilos para formularios estilizados */
-.styled-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
+/* Dropdown Menus */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0; /* Align dropdown to the right */
+    background-color: #ffffff;
+    color: #333333;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 5px 0;
+    border-radius: 4px;
+    z-index: 1000;
+    min-width: 150px;
 }
 
-.styled-form .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.styled-form label {
-    font-weight: bold;
-    color: #333;
-}
-
-.styled-form input,
-.styled-form select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-.styled-form input:focus,
-.styled-form select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-.styled-form .btn-primary {
-    background-color: #007bff;
-    color: white;
+/* Ensure dropdown items are styled consistently */
+.dropdown-menu li button {
+    background: none;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    color: #333;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+    display: block;
+    width: 100%;
+    padding: 8px 12px; /* Adjust padding for better alignment */
+    font-size: 0.9rem; /* Match font size with other elements */
+}
+
+.dropdown-menu li button:hover {
+    background-color: #f1f1f1;
+}
+
+/* Dropdown menu adjustments */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px); /* Asegura que el menú aparezca justo debajo del botón */
+    left: 0; /* Alinea el menú al lado izquierdo del botón */
+    background-color: #ffffff;
+    color: #333333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0; /* Eliminar padding adicional */
+    border-radius: 4px;
+    z-index: 1000;
+    width: 100%; /* Asegura que el ancho sea igual al del botón */
+    box-sizing: border-box; /* Incluye padding y borde en el ancho */
+    overflow: hidden; /* Evita desbordamientos */
+    visibility: hidden; /* Oculta el menú inicialmente */
+    opacity: 0; /* Hace el menú invisible inicialmente */
+    transition: visibility 0s, opacity 0.2s ease-in-out; /* Transición suave */
+}
+
+/* Mostrar el menú desplegable cuando se active */
+.dropdown-menu.active {
+    display: block;
+    visibility: visible; /* Hace visible el menú */
+    opacity: 1; /* Hace el menú completamente opaco */
+}
+
+/* Dropdown menu items */
+.dropdown-menu li {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px; /* Espaciado interno para los elementos */
+    font-size: 0.9rem; /* Tamaño de fuente consistente */
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background-color: #f1f1f1; /* Color de fondo al pasar el cursor */
+}
+
+/* Flag icon adjustments */
+.flag-icon {
+    width: 20px; /* Tamaño reducido para las banderas */
+    height: 15px;
+    margin-right: 8px; /* Espaciado entre la bandera y el texto */
+    object-fit: cover;
+}
+
+/* User menu button adjustments */
+.user-menu-button {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaciado entre la imagen y el texto */
+    background: none;
+    border: none;
+    color: white;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Asegura que el botón y el menú tengan el mismo ancho */
 }
 
-.styled-form .btn-primary:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+.user-menu-button img {
+    width: 30px; /* Tamaño consistente para la imagen */
+    height: 30px;
+    border-radius: 50%; /* Forma circular */
+    object-fit: cover;
 }
 
-.styled-form .btn-primary:active {
-    transform: scale(0.95);
+/* Show dropdown menu on button click */
+.dropdown:hover .dropdown-menu {
+    display: block; /* Muestra el menú al pasar el cursor */
+    visibility: visible; /* Hace visible el menú */
+    opacity: 1; /* Hace el menú completamente opaco */
 }
 
-/* Estilo para alinear el selector de moneda y el botón */
-.form-group-inline {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Footer */
+footer.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
-.form-group-inline select {
-    flex: 0 0 120px; /* Reducir el tamaño del selector */
-    padding: 5px;
+/* Dark Mode Adjustments */
+body.dark-mode .section {
+    background-color: #121212;
+    color: #ffffff;
 }
 
-.form-group-inline .btn-primary {
-    flex: 0 0 150px; /* Ajustar el tamaño del botón */
-    padding: 5px 10px;
-    font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+body.dark-mode header {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-mode footer.footer {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode table th {
+    background-color: #333333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header-profile-image {
+        width: 30px; /* Reduce size for smaller screens */
+        height: 30px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu li a, .menu li button {
+        width: 100%;
+        text-align: left;
+    }
+
+    .form-two-columns {
+        grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 400px) {
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+
+    .profile-image-container {
+        width: 80px;
+        height: 80px;
+    }
 }
