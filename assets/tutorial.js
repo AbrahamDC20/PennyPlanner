@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.innerHTML = `
             <div class="tutorial-box">
                 <p>${step.message}</p>
-                <button id="next-step">Next</button>
+                <button id="next-step">${currentStep < tutorialSteps.length - 1 ? 'Next' : 'Finish'}</button>
             </div>
         `;
         document.body.appendChild(overlay);
@@ -35,11 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
             currentStep++;
             if (currentStep < tutorialSteps.length) {
                 showStep(tutorialSteps[currentStep]);
+            } else {
+                alert('Tutorial completed!');
             }
         });
     }
 
     document.getElementById('start-tutorial').addEventListener('click', () => {
+        currentStep = 0; // Reiniciar el tutorial al inicio
         showStep(tutorialSteps[currentStep]);
     });
 });

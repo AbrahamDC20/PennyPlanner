@@ -1,12 +1,13 @@
 <?php
 require_once dirname(__DIR__) . '/models/db.php';
 
-function generateTutorial($username) {
-    return "Hola $username, bienvenido a Budget Buddy. Aquí tienes un tutorial sobre cómo usar la aplicación:
-    1. Navega por la página de inicio para ver tus transacciones recientes.
-    2. Ve a la sección de perfil para actualizar tu información personal.
-    3. Usa la sección de transacciones para agregar, editar o eliminar transacciones.
-    4. Personaliza la configuración de la aplicación en la sección de configuración.";
+function generateTutorial() {
+    return [
+        ['message' => t('tutorial_step_1'), 'element' => '#dashboard'],
+        ['message' => t('tutorial_step_2'), 'element' => '#profile'],
+        ['message' => t('tutorial_step_3'), 'element' => '#transactions'],
+        ['message' => t('tutorial_step_4'), 'element' => '#settings'],
+    ];
 }
 
 function saveTutorial($userId, $content) {

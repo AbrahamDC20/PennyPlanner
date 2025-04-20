@@ -140,6 +140,10 @@ $translations = [
         'invalid_input' => 'Entrada inválida. Por favor, inténtalo de nuevo.',
         'error_generating_response' => 'Hubo un error al generar la respuesta. Por favor, inténtalo de nuevo más tarde.',
         'your_question' => 'Escribe tu mensaje...',
+        'tutorial_step_1' => 'Navega por la página de inicio para ver tus transacciones recientes.',
+        'tutorial_step_2' => 'Ve a la sección de perfil para actualizar tu información personal.',
+        'tutorial_step_3' => 'Usa la sección de transacciones para agregar, editar o eliminar transacciones.',
+        'tutorial_step_4' => 'Personaliza la configuración de la aplicación en la sección de configuración.',
     ],
     'en' => [
         'welcome' => 'Welcome to Budget Buddy',
@@ -276,6 +280,10 @@ $translations = [
         'invalid_input' => 'Invalid input. Please try again.',
         'error_generating_response' => 'There was an error generating the response. Please try again later.',
         'your_question' => 'Type your message...',
+        'tutorial_step_1' => 'Navigate the homepage to view your recent transactions.',
+        'tutorial_step_2' => 'Go to the profile section to update your personal information.',
+        'tutorial_step_3' => 'Use the transactions section to add, edit, or delete transactions.',
+        'tutorial_step_4' => 'Customize the app settings in the settings section.',
     ],
     'lt' => [
         'welcome' => 'Sveiki atvykę į Budget Buddy',
@@ -380,6 +388,10 @@ $translations = [
         'no_friends' => 'Jūs dar neturite draugų.',
         'start_tutorial' => 'Pradėti Pamoką',
         'customer_support' => 'Klientų Aptarnavimas',
+        'tutorial_step_1' => 'Naršykite pagrindinį puslapį, kad pamatytumėte naujausius sandorius.',
+        'tutorial_step_2' => 'Eikite į profilio skyrių, kad atnaujintumėte savo asmeninę informaciją.',
+        'tutorial_step_3' => 'Naudokite sandorių skyrių, kad pridėtumėte, redaguotumėte ar ištrintumėte sandorius.',
+        'tutorial_step_4' => 'Pritaikykite programos nustatymus nustatymų skyriuje.',
     ],
     'fr' => [
         'welcome' => 'Bienvenue sur Budget Buddy',
