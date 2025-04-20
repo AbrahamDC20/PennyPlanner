@@ -1,0 +1,39 @@
+2025-04-20 15:06:58 - Sanitized username: testuser
+2025-04-20 15:06:58 - Provided password (trimmed): password123
+2025-04-20 15:06:58 - User not found: testuser
+2025-04-20 15:08:05 - Sanitized username: testuser
+2025-04-20 15:08:05 - Provided password (trimmed): password123
+2025-04-20 15:08:05 - User found: {"id":9,"username":"testuser","password_hash":"$2y$12$xdYA7iHrSaN9W7w9RJ0yYeLWy0myKLcPtsC\/5m8045to95F0iO\/oO","first_name":"Test","last_name":"User","email":"test@example.com","phone":"123456789","profile_image":null,"role":"user","created_at":"2025-04-20 18:08:05"}
+2025-04-20 15:08:05 - Stored hash: $2y$12$xdYA7iHrSaN9W7w9RJ0yYeLWy0myKLcPtsC/5m8045to95F0iO/oO
+2025-04-20 15:08:06 - Password verification result for user testuser: success
+2025-04-20 15:08:06 - Password verification successful for user: testuser
+2025-04-20 15:09:32 - Sanitized username: testuser
+2025-04-20 15:09:32 - Provided password (trimmed): password123
+2025-04-20 15:09:32 - User found: {"id":12,"username":"testuser","password_hash":"$2y$12$ubZQ42Gsel3D5S36sqDfcundKJ\/Ispw9TkMxeuAOb1yvtF4aZrodu","first_name":"Test","last_name":"User","email":"test@example.com","phone":"123456789","profile_image":null,"role":"user","created_at":"2025-04-20 18:09:32"}
+2025-04-20 15:09:32 - Stored hash: $2y$12$ubZQ42Gsel3D5S36sqDfcundKJ/Ispw9TkMxeuAOb1yvtF4aZrodu
+2025-04-20 15:09:32 - Password verification result for user testuser: success
+2025-04-20 15:09:32 - Password verification successful for user: testuser
+2025-04-20 15:10:39 - Sanitized username: testuser
+2025-04-20 15:10:39 - Provided password (trimmed): password123
+2025-04-20 15:10:39 - User found: {"id":15,"username":"testuser","password_hash":"$2y$12$y456AV0VrLFA5GmhU79Zz.YDGs4QGzlRZNw3heb2oiUT9pEYDmjaG","first_name":"Test","last_name":"User","email":"test@example.com","phone":"123456789","profile_image":null,"role":"user","created_at":"2025-04-20 18:10:39"}
+2025-04-20 15:10:39 - Stored hash: $2y$12$y456AV0VrLFA5GmhU79Zz.YDGs4QGzlRZNw3heb2oiUT9pEYDmjaG
+2025-04-20 15:10:39 - Password verification result for user testuser: success
+2025-04-20 15:10:39 - Password verification successful for user: testuser
+2025-04-20 15:11:48 - Sanitized username: testuser
+2025-04-20 15:11:48 - Provided password (trimmed): password123
+2025-04-20 15:11:48 - User found: {"id":19,"username":"testuser","password_hash":"$2y$12$4bcTOtg8YAS3UfzopWJfQOQN7Nrb\/mWO1Mc4Wakyz2F3W..iLROcm","first_name":"Test","last_name":"User","email":"test@example.com","phone":"123456789","profile_image":null,"role":"user","created_at":"2025-04-20 18:11:48"}
+2025-04-20 15:11:48 - Stored hash: $2y$12$4bcTOtg8YAS3UfzopWJfQOQN7Nrb/mWO1Mc4Wakyz2F3W..iLROcm
+2025-04-20 15:11:48 - Password verification result for user testuser: success
+2025-04-20 15:11:48 - Password verification successful for user: testuser
+2025-04-20 15:13:01 - Sanitized username: testuser
+2025-04-20 15:13:01 - Provided password (trimmed): password123
+2025-04-20 15:13:01 - User found: {"id":22,"username":"testuser","password_hash":"$2y$12$.GN0uSGljdbROmpdN5Kclu.9SajIEZ9n.6Jph.OCEX\/YEpfKaEuDC","first_name":"Test","last_name":"User","email":"test@example.com","phone":"123456789","profile_image":null,"role":"user","created_at":"2025-04-20 18:13:01"}
+2025-04-20 15:13:01 - Stored hash: $2y$12$.GN0uSGljdbROmpdN5Kclu.9SajIEZ9n.6Jph.OCEX/YEpfKaEuDC
+2025-04-20 15:13:01 - Password verification result for user testuser: success
+2025-04-20 15:13:01 - Password verification successful for user: testuser
+2025-04-20 15:14:43 - Sanitized username: testuser
+2025-04-20 15:14:43 - Provided password (trimmed): password123
+2025-04-20 15:14:43 - User found: {"id":25,"username":"testuser","password_hash":"$2y$12$u\/z3kPQo2ig0LJYQbs0CROWGRdOAm8oJbkYN.VGHxOUfFqQAfagpe","first_name":"Test","last_name":"User","email":"test@example.com","phone":"123456789","profile_image":null,"role":"user","created_at":"2025-04-20 18:14:43"}
+2025-04-20 15:14:43 - Stored hash: $2y$12$u/z3kPQo2ig0LJYQbs0CROWGRdOAm8oJbkYN.VGHxOUfFqQAfagpe
+2025-04-20 15:14:43 - Password verification result for user testuser: success
+2025-04-20 15:14:43 - Password verification successful for user: testuser

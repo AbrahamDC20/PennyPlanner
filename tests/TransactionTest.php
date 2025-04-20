@@ -10,29 +10,37 @@ class TransactionTest extends TestCase {
     }
 
     public function testAddTransaction() {
-        global $conn;
-        $userId = 1;
-        $description = 'Test Transaction';
-        $amount = 100.50;
-        $currency = 'USD';
+        try {
+            global $conn;
+            $userId = 1;
+            $description = 'Test Transaction';
+            $amount = 100.50;
+            $currency = 'USD';
 
-        $stmt = $conn->prepare("INSERT INTO transactions (user_id, description, amount, currency) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isds", $userId, $description, $amount, $currency);
-        $this->assertTrue($stmt->execute());
-        $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO transactions (user_id, description, amount, currency) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("isds", $userId, $description, $amount, $currency);
+            $this->assertTrue($stmt->execute());
+            $stmt->close();
+        } catch (Exception $e) {
+            $this->fail("Exception in testAddTransaction: " . $e->getMessage());
+        }
     }
 
     public function testGetTransactions() {
-        global $conn;
-        $userId = 1;
+        try {
+            global $conn;
+            $userId = 1;
 
-        $stmt = $conn->prepare("INSERT INTO transactions (user_id, description, amount, currency) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isds", $userId, $description = 'Test Transaction', $amount = 100.50, $currency = 'USD');
-        $stmt->execute();
-        $stmt->close();
+            $stmt = $conn->prepare("INSERT INTO transactions (user_id, description, amount, currency) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("isds", $userId, $description = 'Test Transaction', $amount = 100.50, $currency = 'USD');
+            $stmt->execute();
+            $stmt->close();
 
-        $transactions = getTransactions($userId);
-        $this->assertIsArray($transactions);
-        $this->assertNotEmpty($transactions);
+            $transactions = getTransactions($userId);
+            $this->assertIsArray($transactions);
+            $this->assertNotEmpty($transactions);
+        } catch (Exception $e) {
+            $this->fail("Exception in testGetTransactions: " . $e->getMessage());
+        }
     }
 }
