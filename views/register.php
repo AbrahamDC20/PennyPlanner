@@ -19,10 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $confirmPassword = trim($_POST['confirm_password'] ?? '');
         $firstName = sanitizeInput($_POST['first_name'] ?? '');
         $lastName = sanitizeInput($_POST['last_name'] ?? '');
-        $email = sanitizeInput($_POST['email'] ?? '');
+        $email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
         $phone = sanitizeInput($_POST['phone'] ?? '');
 
-        if ($username && $password && $confirmPassword && $firstName && $lastName && $email && $phone) {
+        if (!$email) {
+            $error = t('invalid_email');
+        } elseif ($username && $password && $confirmPassword && $firstName && $lastName && $phone) {
             if ($password !== $confirmPassword) {
                 $error = t('password_mismatch');
             } elseif (strlen($password) < 8) {

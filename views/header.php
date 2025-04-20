@@ -17,16 +17,14 @@ function renderLanguageOptions($currentLanguage) {
     ];
 
     foreach ($languages as $code => [$label, $flag]) {
-        if ($currentLanguage !== $code) {
-            echo '<li>
-                <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
-                    <button type="submit" name="language" value="' . htmlspecialchars($code) . '" class="dropdown-item">
-                        <img src="' . htmlspecialchars($flag) . '" alt="' . htmlspecialchars($label) . '" class="flag-icon">
-                        ' . htmlspecialchars($label) . '
-                    </button>
-                </form>
-            </li>';
-        }
+        echo '<li>
+            <form method="POST" action="/Website_Technologies_Abraham/Final_Proyect/routes/set_language.php">
+                <button type="submit" name="language" value="' . htmlspecialchars($code) . '" class="dropdown-item">
+                    <img src="' . htmlspecialchars($flag) . '" alt="' . htmlspecialchars($label) . '" class="flag-icon">
+                    ' . htmlspecialchars($label) . '
+                </button>
+            </form>
+        </li>';
     }
 }
 ?>

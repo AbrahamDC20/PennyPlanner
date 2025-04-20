@@ -6,7 +6,10 @@ require_once dirname(__DIR__) . '/controllers/auth.php';
 require_once dirname(__DIR__) . '/controllers/translations.php';
 requireLogin();
 $userId = $_SESSION['user']['id']; // Obtén el ID del usuario actual
-$transactions = getTransactions($userId); // Pasa el userId a la función
+$page = $_GET['page'] ?? 1;
+$limit = 10;
+$offset = ($page - 1) * $limit;
+$transactions = getTransactions($userId, $limit, $offset); // Pasa el userId a la función
 ?>
 <?php include 'header.php'; ?>
 <main style="margin-top: 60px;"> <!-- Adjust margin to match header height -->
@@ -15,9 +18,13 @@ $transactions = getTransactions($userId); // Pasa el userId a la función
         <h3><?= t('transaction_history') ?></h3>
         <ul>
             <?php foreach ($transactions as $transaction): ?>
-                <li><?php echo htmlspecialchars($transaction['description']); ?> - <?php echo htmlspecialchars($transaction['amount']); ?> USD</li>
+                <li><?= htmlspecialchars($transaction['description']) ?> - <?= htmlspecialchars($transaction['amount']) ?> USD</li>
             <?php endforeach; ?>
         </ul>
+        <div class="pagination">
+            <a href="?page=<?= $page - 1 ?>" <?= $page <= 1 ? 'style="visibility:hidden;"' : '' ?>>Previous</a>
+            <a href="?page=<?= $page + 1 ?>">Next</a>
+        </div>
         <div id="chart-container" style="width: 100%; height: 400px;"></div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>

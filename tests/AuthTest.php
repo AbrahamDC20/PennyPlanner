@@ -41,4 +41,9 @@ class AuthTest extends TestCase {
             $this->fail("Exception in testRequireLogin: " . $e->getMessage());
         }
     }
+
+    public function testInvalidEmailRegistration() {
+        $this->expectException(Exception::class);
+        registerUser('testuser', 'password123', 'Test', 'User', 'invalid-email', '123456789');
+    }
 }

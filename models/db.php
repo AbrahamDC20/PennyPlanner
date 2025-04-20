@@ -86,6 +86,9 @@ $conn->query("
 $conn->query("
     CREATE INDEX IF NOT EXISTS idx_transactions_user_id ON transactions(user_id)
 ");
+$conn->query("
+    CREATE INDEX IF NOT EXISTS idx_transactions_currency ON transactions(currency)
+");
 
 // Asegurarse de que la cuenta de administrador exista (llamar explícitamente en lugar de automáticamente)
 // ensureAdminAccount();
@@ -118,10 +121,10 @@ if (!function_exists('updateProfileImageInDB')) {
 }
 
 // Optimizar consulta de transacciones con índice en la columna 'date'
-function getTransactions($userId) {
+function getTransactions($userId, $limit = 10, $offset = 0) {
     global $conn;
-    $stmt = $conn->prepare("SELECT * FROM transactions WHERE user_id = ?");
-    $stmt->bind_param("i", $userId);
+    $stmt = $conn->prepare("SELECT * FROM transactions WHERE user_id = ? LIMIT ? OFFSET ?");
+    $stmt->bind_param("iii", $userId, $limit, $offset);
     $stmt->execute();
     $result = $stmt->get_result();
     $transactions = $result->fetch_all(MYSQLI_ASSOC);
