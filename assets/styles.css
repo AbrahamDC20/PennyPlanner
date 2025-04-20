@@ -6,8 +6,9 @@ body, html {
 }
 
 body {
-    background-color: transparent !important; /* Eliminar fondo azul */
-    color: #333333; /* Mejor contraste */
+    background-color: #f9f9f9; /* Fondo claro */
+    color: #333; /* Color de texto */
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -567,6 +568,40 @@ footer button:hover {
 
 .switch input:checked + label:before {
     transform: translateX(14px);
+}
+
+.switch input[type="checkbox"] {
+    display: none;
+}
+
+.switch label {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.switch label:after {
+    content: '';
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: 0.3s;
+}
+
+.switch input[type="checkbox"]:checked + label {
+    background-color: #007bff;
+}
+
+.switch input[type="checkbox"]:checked + label:after {
+    left: 21px;
 }
 
 /* Language button styles */

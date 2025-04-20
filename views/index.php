@@ -12,7 +12,7 @@ $offset = ($page - 1) * $limit;
 $transactions = getTransactions($userId, $limit, $offset); // Pasa el userId a la función
 ?>
 <?php include 'header.php'; ?>
-<main style="margin-top: 60px;"> <!-- Adjust margin to match header height -->
+<main style="margin-top: 60px; background-color: #f9f9f9;"> <!-- Ajustar fondo -->
     <div class="section">
         <h2><?= t('transactions') ?></h2>
         <h3><?= t('transaction_history') ?></h3>

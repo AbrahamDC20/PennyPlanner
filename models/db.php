@@ -130,8 +130,11 @@ function ensureDatabaseSchema() {
     if ($result->num_rows === 0) {
         $conn->query("ALTER TABLE users ADD COLUMN 2fa_enabled TINYINT(1) DEFAULT 0");
     }
+
+    // Línea 102: Error de sintaxis en la consulta SQL
+    $conn->query("ALTER TABLE transactions ADD CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE");
 }
 
 // Llamar a la función para asegurarse de que la base de datos esté actualizada
-ensureDatabaseSchema();
+ensureDatabaseSchema(); // Asegurarse de que la base de datos esté actualizada
 ?>

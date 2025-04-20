@@ -9,7 +9,7 @@ $recommendations = generateSpendingRecommendations($_SESSION['user']['id']);
 ?>
 
 <?php include 'header.php'; ?>
-<main style="margin-top: 0;"> <!-- Ajustar margen superior -->
+<main style="margin-top: 0; background-color: #f9f9f9;"> <!-- Ajustar fondo -->
     <div class="section">
         <h2><?= t('profile') ?></h2>
         <div class="profile-header" style="display: flex; align-items: center; gap: 20px;"> <!-- Align image and name -->
