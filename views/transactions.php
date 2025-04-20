@@ -5,7 +5,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start(); // Start session only if not already started
 }
 requireLogin();
-$transactions = getTransactions();
+$userId = $_SESSION['user']['id']; // Obtén el ID del usuario actual
+$transactions = getTransactions($userId); // Pasa el userId a la función
 ?>
 
 <?php include 'header.php'; ?>

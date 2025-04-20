@@ -1894,3 +1894,46 @@
 2025-04-20 16:32:13 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
 2025-04-20 16:32:14 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
 2025-04-20 16:34:58 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:39:39 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:23 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:28 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:29 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:30 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:33 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:33 - Sanitized username: Abraham
+2025-04-20 16:41:33 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 16:41:33 - User found: {"id":1,"username":"Abraham","password_hash":"$2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q","first_name":"Abraham","last_name":"D\u00edaz","email":"abrahamdc2004@gmail.com","phone":"722683559","profile_image":"instagram.jpeg","role":"admin"}
+2025-04-20 16:41:33 - Stored hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:33 - Password verification result for user Abraham: success
+2025-04-20 16:41:33 - Password verification successful for user: Abraham
+2025-04-20 16:41:33 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:36 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:41:42 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:42:19 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:42:19 - Unknown column 'currency' in 'field list'
+2025-04-20 16:42:21 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:42:23 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:42:23 - Unknown column 'currency' in 'field list'
+2025-04-20 16:42:25 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:42:26 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:42:58 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:42:58 - Unknown column 'currency' in 'field list'
+2025-04-20 16:43:05 - Admin account already exists. Username: Abraham, Stored Hash: $2y$10$JRO.AIyRCScwDCOvgALA1eZsceaS6uCyV2ufJaqE0.KcI.vxQiu7q
+2025-04-20 16:53:49 - Sanitized username: Abraham
+2025-04-20 16:53:49 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 16:53:49 - User found: {"id":1,"username":"Abraham","password_hash":"$2y$10$rnf\/A0DuJD.WpNCbTqir8.bC5Blioje3MKTJYX92pNYzcATH2MEfi","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":null,"role":"admin","created_at":"2025-04-20 17:53:43"}
+2025-04-20 16:53:49 - Stored hash: $2y$10$rnf/A0DuJD.WpNCbTqir8.bC5Blioje3MKTJYX92pNYzcATH2MEfi
+2025-04-20 16:53:49 - Password verification result for user Abraham: success
+2025-04-20 16:53:49 - Password verification successful for user: Abraham
+2025-04-20 16:53:55 - Sanitized username: Abraham
+2025-04-20 16:53:55 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 16:53:55 - User found: {"id":1,"username":"Abraham","password_hash":"$2y$10$rnf\/A0DuJD.WpNCbTqir8.bC5Blioje3MKTJYX92pNYzcATH2MEfi","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":null,"role":"admin","created_at":"2025-04-20 17:53:43"}
+2025-04-20 16:53:55 - Stored hash: $2y$10$rnf/A0DuJD.WpNCbTqir8.bC5Blioje3MKTJYX92pNYzcATH2MEfi
+2025-04-20 16:53:55 - Password verification result for user Abraham: success
+2025-04-20 16:53:55 - Password verification successful for user: Abraham
+2025-04-20 16:54:00 - Sanitized username: Abraham
+2025-04-20 16:54:00 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 16:54:00 - User found: {"id":1,"username":"Abraham","password_hash":"$2y$10$rnf\/A0DuJD.WpNCbTqir8.bC5Blioje3MKTJYX92pNYzcATH2MEfi","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":null,"role":"admin","created_at":"2025-04-20 17:53:43"}
+2025-04-20 16:54:00 - Stored hash: $2y$10$rnf/A0DuJD.WpNCbTqir8.bC5Blioje3MKTJYX92pNYzcATH2MEfi
+2025-04-20 16:54:00 - Password verification result for user Abraham: success
+2025-04-20 16:54:00 - Password verification successful for user: Abraham

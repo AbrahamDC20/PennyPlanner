@@ -78,6 +78,8 @@ $translations = [
         'start_using_app' => 'Comenzar a usar la aplicación',
         'weak' => 'Contraseña débil. Usa al menos 8 caracteres.',
         'documentation' => 'Documentación',
+        'admin_login_only' => 'Las cuentas de administrador solo pueden iniciar sesión desde la página de administrador.',
+        'user_login_only' => 'Solo los usuarios pueden iniciar sesión desde esta página.',
     ],
     'en' => [
         'welcome' => 'Welcome to Budget Buddy',
@@ -153,6 +155,8 @@ $translations = [
         'start_using_app' => 'Start Using the App',
         'weak' => 'Weak password. Use at least 8 characters.',
         'documentation' => 'Documentation',
+        'admin_login_only' => 'Admin accounts can only log in from the admin login page.',
+        'user_login_only' => 'Only users can log in from this page.',
     ],
     'lt' => [
         'welcome' => 'Sveiki atvykę į Budget Buddy',
@@ -228,6 +232,8 @@ $translations = [
         'start_using_app' => 'Pradėti naudoti programą',
         'weak' => 'Silpnas slaptažodis. Naudokite bent 8 simbolius.',
         'documentation' => 'Dokumentacija',
+        'admin_login_only' => 'Administratoriaus paskyros gali prisijungti tik iš administratoriaus prisijungimo puslapio.',
+        'user_login_only' => 'Tik vartotojai gali prisijungti iš šio puslapio.',
     ],
     'fr' => [
         'welcome' => 'Bienvenue sur Budget Buddy',

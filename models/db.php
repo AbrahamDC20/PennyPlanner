@@ -23,41 +23,31 @@ if (!function_exists('ensureAdminAccount')) {
         try {
             $stmt = $conn->prepare("SELECT id, password_hash FROM users WHERE username = 'Abraham' AND role = 'admin'");
             $stmt->execute();
-            $stmt->bind_result($adminId, $storedHash);
-            if ($stmt->fetch()) {
-                $stmt->close(); // Cerrar el statement antes de continuar
-                logError("Admin account already exists. Username: Abraham, Stored Hash: $storedHash");
+            $result = $stmt->get_result();
+            $admin = $result->fetch_assoc();
+            $stmt->close();
+
+            if ($admin) {
                 // Verificar si el hash es válido
-                if (!password_verify('17Del12Del2004', $storedHash)) {
-                    logError("Invalid hash detected for admin. Regenerating hash...");
+                if (!password_verify('17Del12Del2004', $admin['password_hash'])) {
                     $newHash = password_hash('17Del12Del2004', PASSWORD_DEFAULT);
                     $updateStmt = $conn->prepare("UPDATE users SET password_hash = ? WHERE id = ?");
-                    $updateStmt->bind_param("si", $newHash, $adminId);
+                    $updateStmt->bind_param("si", $newHash, $admin['id']);
                     $updateStmt->execute();
                     $updateStmt->close();
-                    logError("Admin password hash successfully regenerated.");
                 }
             } else {
-                $stmt->close(); // Cerrar el statement antes de insertar
                 $passwordHash = password_hash('17Del12Del2004', PASSWORD_DEFAULT);
-                logError("Generated password hash for admin: $passwordHash");
                 $stmtInsert = $conn->prepare("INSERT INTO users (username, password_hash, first_name, last_name, email, phone, profile_image, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmtInsert->bind_param(
-                    "ssssssss",
-                    $username = 'Abraham',
-                    $passwordHash,
-                    $firstName = 'Abraham',
-                    $lastName = 'Díaz',
-                    $email = 'pennyplanner2025@gmail.com',
-                    $phone = '722683559',
-                    $profileImage = NULL,
-                    $role = 'admin'
-                );
-                if ($stmtInsert->execute()) {
-                    logError("Admin account created successfully with username: $username");
-                } else {
-                    logError("Failed to create admin account: " . $stmtInsert->error);
-                }
+                $username = 'Abraham';
+                $firstName = 'Abraham';
+                $lastName = 'Díaz';
+                $email = 'pennyplanner2025@gmail.com';
+                $phone = '722683559';
+                $profileImage = NULL;
+                $role = 'admin';
+                $stmtInsert->bind_param("ssssssss", $username, $passwordHash, $firstName, $lastName, $email, $phone, $profileImage, $role);
+                $stmtInsert->execute();
                 $stmtInsert->close();
             }
         } catch (Exception $e) {
@@ -81,6 +71,17 @@ $conn->query("
         content TEXT NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     )
+");
+
+// Crear índices si no existen
+$conn->query("
+    CREATE INDEX IF NOT EXISTS idx_users_username ON users(username)
+");
+$conn->query("
+    CREATE INDEX IF NOT EXISTS idx_users_email ON users(email)
+");
+$conn->query("
+    CREATE INDEX IF NOT EXISTS idx_transactions_date ON transactions(date)
 ");
 
 // Asegurarse de que la cuenta de administrador exista
@@ -114,11 +115,11 @@ if (!function_exists('updateProfileImageInDB')) {
 }
 
 // Optimizar consulta de transacciones con índice en la columna 'date'
-function getTransactions($limit = 10, $offset = 0) {
+function getTransactions($userId, $limit = 10, $offset = 0) {
     global $conn;
     try {
-        $stmt = $conn->prepare("SELECT description, amount, currency FROM transactions ORDER BY date DESC LIMIT ? OFFSET ?");
-        $stmt->bind_param("ii", $limit, $offset);
+        $stmt = $conn->prepare("SELECT description, amount, currency FROM transactions WHERE user_id = ? ORDER BY date DESC LIMIT ? OFFSET ?");
+        $stmt->bind_param("iii", $userId, $limit, $offset);
         $stmt->execute();
         $result = $stmt->get_result();
         $stmt->close();

@@ -10,7 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $user = getUser($username, $password);
 
-    if ($user && $user['role'] === 'admin') {
+    if ($user) {
+        if ($user['role'] !== 'admin') {
+            $_SESSION['error'] = t('user_login_only'); // Mensaje de error traducido
+            header('Location: ../views/admin_login.php');
+            exit();
+        }
         $_SESSION['user'] = $user; // Guardar datos del administrador en la sesión
         header('Location: ../views/admin.php');
         exit();

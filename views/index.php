@@ -5,7 +5,8 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once dirname(__DIR__) . '/controllers/auth.php';
 require_once dirname(__DIR__) . '/controllers/translations.php';
 requireLogin();
-$transactions = getTransactions(); // Ensure $transactions is defined
+$userId = $_SESSION['user']['id']; // Obtén el ID del usuario actual
+$transactions = getTransactions($userId); // Pasa el userId a la función
 ?>
 <?php include 'header.php'; ?>
 <main style="margin-top: 60px;"> <!-- Adjust margin to match header height -->

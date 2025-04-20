@@ -48,7 +48,7 @@ function renderLanguageOptions($currentLanguage) {
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/transactions.php"><?= t('transactions') ?></a></li>
                 <li><a href="/Website_Technologies_Abraham/Final_Proyect/views/settings.php"><?= t('settings') ?></a></li>
                 <li class="dropdown" style="margin-right: 20px;">
-                    <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('language-menu')">
+                    <button class="dropdown-toggle user-menu-button" onclick="toggleDropdown('language-menu')" aria-haspopup="true" aria-expanded="false">
                         <?= t('language') ?>
                     </button>
                     <ul id="language-menu" class="dropdown-menu" style="width: 150px;"> <!-- Ajustar tamaño -->
@@ -88,9 +88,11 @@ function renderLanguageOptions($currentLanguage) {
             const isActive = menu.classList.contains('active');
             document.querySelectorAll('.dropdown-menu').forEach((dropdown) => {
                 dropdown.classList.remove('active');
+                dropdown.setAttribute('aria-expanded', 'false');
             });
             if (!isActive) {
                 menu.classList.add('active');
+                menu.setAttribute('aria-expanded', 'true');
             }
         }
 
