@@ -37,72 +37,6 @@ $transactions = getTransactions($userId, $limit, $offset); // Pasa el userId a l
                 <button type="submit" class="btn-primary"><?= t('add_transaction') ?></button>
             </div>
         </form>
-        <form id="report-form" method="GET" action="../routes/generate_report.php" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px;">
-            <div>
-                <label for="start_date"><?= t('start_date') ?>:</label>
-                <input type="date" id="start_date" name="start_date" required>
-            </div>
-            <div>
-                <label for="end_date"><?= t('end_date') ?>:</label>
-                <input type="date" id="end_date" name="end_date" required>
-            </div>
-            <button type="button" id="generate-report" class="btn-primary"><?= t('generate_report') ?></button>
-        </form>
-        <div id="report-results" style="margin-top: 20px;">
-            <!-- Aquí se mostrarán los resultados del reporte -->
-        </div>
-        <script>
-            document.getElementById('generate-report').addEventListener('click', function () {
-                const form = document.getElementById('report-form');
-                const formData = new FormData(form);
-                const params = new URLSearchParams(formData);
-
-                fetch(form.action + '?' + params.toString())
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        const resultsContainer = document.getElementById('report-results');
-                        resultsContainer.innerHTML = '';
-
-                        if (data.error) {
-                            resultsContainer.textContent = data.error;
-                        } else if (data.length === 0) {
-                            resultsContainer.textContent = '<?= t('no_transactions_found') ?>';
-                        } else {
-                            const table = document.createElement('table');
-                            table.innerHTML = `
-                                <thead>
-                                    <tr>
-                                        <th><?= t('description') ?></th>
-                                        <th><?= t('amount') ?></th>
-                                        <th><?= t('currency') ?></th>
-                                        <th><?= t('date') ?></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${data.map(transaction => `
-                                        <tr>
-                                            <td>${transaction.description}</td>
-                                            <td>${transaction.amount}</td>
-                                            <td>${transaction.currency}</td>
-                                            <td>${transaction.date}</td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            `;
-                            resultsContainer.appendChild(table);
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching report:', error);
-                        document.getElementById('report-results').textContent = '<?= t('error_loading_report') ?>';
-                    });
-            });
-        </script>
         <h3 style="text-align: center;"><?= t('transaction_history') ?></h3>
         <ul style="list-style: none; padding: 0;">
             <?php foreach ($transactions as $transaction): ?>
@@ -110,9 +44,9 @@ $transactions = getTransactions($userId, $limit, $offset); // Pasa el userId a l
                     <?= htmlspecialchars($transaction['description']); ?> - 
                     <?= htmlspecialchars($transaction['amount']); ?> 
                     <?= htmlspecialchars($transaction['currency'] ?? 'USD'); ?>
-                    <form method="POST" action="../routes/toggle_favorite.php" style="display: inline;">
-                        <input type="hidden" name="transaction_id" value="<?= $transaction['id'] ?>">
-                        <button type="submit" class="btn-secondary"><?= t('favorite') ?></button>
+                    <form method="POST" action="../routes/delete_transaction.php" style="display: inline;">
+                        <input type="hidden" name="transaction_id" value="<?= $transaction['id']; ?>">
+                        <button type="submit" class="btn-danger" style="margin-left: 10px;"><?= t('delete') ?></button>
                     </form>
                 </li>
             <?php endforeach; ?>

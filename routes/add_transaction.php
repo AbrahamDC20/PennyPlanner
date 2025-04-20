@@ -10,11 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $currency = sanitizeInput($_POST['currency']);
     $userId = $_SESSION['user']['id'];
 
-    $exchangeRate = getExchangeRate($currency, 'USD'); // Función para obtener la tasa de cambio
-    $amountInUSD = $amount * $exchangeRate;
-
+    // Eliminar la conversión de moneda
     $stmt = $conn->prepare("INSERT INTO transactions (user_id, description, amount, currency) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("isds", $userId, $description, $amountInUSD, $currency);
+    $stmt->bind_param("isds", $userId, $description, $amount, $currency);
     $stmt->execute();
     $stmt->close();
 

@@ -70,9 +70,6 @@ function renderLanguageOptions($currentLanguage) {
                         </form>
                     </li>
                 <?php endif; ?>
-                <li>
-                    <!-- Eliminar el botón de modo oscuro -->
-                </li>
             </ul>
         </nav>
     </header>
@@ -93,20 +90,41 @@ function renderLanguageOptions($currentLanguage) {
             if (!isActive) {
                 menu.classList.add('active');
                 menu.setAttribute('aria-expanded', 'true');
+            } else {
+                menu.classList.remove('active');
+                menu.setAttribute('aria-expanded', 'false');
             }
         }
-    </script>
-    <script>
-        // Close dropdowns when clicking outside
+
+        // Cierra los menús desplegables al hacer clic fuera de ellos
         document.addEventListener('click', (event) => {
             const dropdowns = document.querySelectorAll('.dropdown-menu');
             dropdowns.forEach((dropdown) => {
-                if (!dropdown.contains(event.target) && !dropdown.previousElementSibling.contains(event.target)) {
+                const toggleButton = dropdown.previousElementSibling;
+                if (!dropdown.contains(event.target) && !toggleButton.contains(event.target)) {
                     dropdown.classList.remove('active');
+                    dropdown.setAttribute('aria-expanded', 'false');
                 }
             });
         });
 
+        // Evita que el clic dentro del menú cierre el menú
+        document.querySelectorAll('.dropdown-menu').forEach((menu) => {
+            menu.addEventListener('click', (event) => {
+                event.stopPropagation();
+            });
+        });
+
+        // Cierra el menú solo al seleccionar una opción
+        document.querySelectorAll('.dropdown-menu button').forEach((button) => {
+            button.addEventListener('click', () => {
+                const menu = button.closest('.dropdown-menu');
+                menu.classList.remove('active');
+                menu.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+    <script>
         // Notification system
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');

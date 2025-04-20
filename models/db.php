@@ -286,12 +286,7 @@ function getExchangeRate($fromCurrency, $toCurrency) {
         'EUR' => ['USD' => 1.18, 'EUR' => 1, 'GBP' => 0.88],
         'GBP' => ['USD' => 1.33, 'EUR' => 1.14, 'GBP' => 1],
     ];
-
-    if (isset($exchangeRates[$fromCurrency][$toCurrency])) {
-        return $exchangeRates[$fromCurrency][$toCurrency];
-    }
-
-    throw new Exception("Exchange rate not available for $fromCurrency to $toCurrency");
+    // ...existing code...
 }
 
 ?>
