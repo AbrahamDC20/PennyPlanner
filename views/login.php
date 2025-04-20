@@ -17,8 +17,10 @@ if (session_status() === PHP_SESSION_NONE) {
             <input type="text" id="username" name="username" required>
             <label for="password"><?= t('password') ?>:</label>
             <input type="password" id="password" name="password" required>
-            <label for="2fa_code"><?= t('2fa_code') ?>:</label>
-            <input type="text" id="2fa_code" name="2fa_code" required>
+            <?php if ($_SESSION['user']['2fa_enabled'] ?? false): ?>
+                <label for="2fa_code"><?= t('2fa_code') ?>:</label>
+                <input type="text" id="2fa_code" name="2fa_code" required>
+            <?php endif; ?>
             <?php if (isset($_SESSION['error'])): ?>
                 <p class="error"><?= htmlspecialchars($_SESSION['error']) ?></p>
                 <?php unset($_SESSION['error']); ?>

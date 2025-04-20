@@ -45,6 +45,15 @@ requireLogin();
                 </div>
             </div>
 
+            <!-- Configuración de 2FA -->
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 20px;">
+                <label for="2fa_enabled"><?= t('enable_2fa') ?></label>
+                <div class="switch">
+                    <input type="checkbox" id="2fa_enabled" name="2fa_enabled" value="enabled" <?= ($_SESSION['user']['2fa_enabled'] ?? false) ? 'checked' : '' ?>>
+                    <label for="2fa_enabled"></label>
+                </div>
+            </div>
+
             <button type="submit" name="update_settings"><?= t('update') ?></button>
         </form>
     </div>

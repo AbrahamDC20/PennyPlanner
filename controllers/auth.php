@@ -227,12 +227,18 @@ function notifyUserByEmail($email, $subject, $message) {
 // Verificar código 2FA
 function verify2FACode($userId, $inputCode) {
     global $conn;
-    $stmt = $conn->prepare("SELECT 2fa_code FROM users WHERE id = ?");
+
+    $stmt = $conn->prepare("SELECT 2fa_code, 2fa_enabled FROM users WHERE id = ?");
     $stmt->bind_param("i", $userId);
     $stmt->execute();
     $result = $stmt->get_result()->fetch_assoc();
     $stmt->close();
-    return $result && $result['2fa_code'] === $inputCode;
+
+    if (!$result || !$result['2fa_enabled']) {
+        return true; // Si 2FA no está habilitado, permitir el inicio de sesión
+    }
+
+    return $result['2fa_code'] === $inputCode;
 }
 
 function sendEmailNotification($email, $subject, $message) {

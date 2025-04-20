@@ -144,6 +144,8 @@ $translations = [
         'tutorial_step_2' => 'Ve a la sección de perfil para actualizar tu información personal.',
         'tutorial_step_3' => 'Usa la sección de transacciones para agregar, editar o eliminar transacciones.',
         'tutorial_step_4' => 'Personaliza la configuración de la aplicación en la sección de configuración.',
+        'enable_2fa' => 'Habilitar autenticación en dos pasos',
+        '2fa_description' => 'Añade una capa adicional de seguridad a tu cuenta.',
     ],
     'en' => [
         'welcome' => 'Welcome to Budget Buddy',
@@ -284,6 +286,8 @@ $translations = [
         'tutorial_step_2' => 'Go to the profile section to update your personal information.',
         'tutorial_step_3' => 'Use the transactions section to add, edit, or delete transactions.',
         'tutorial_step_4' => 'Customize the app settings in the settings section.',
+        'enable_2fa' => 'Enable Two-Factor Authentication',
+        '2fa_description' => 'Add an extra layer of security to your account.',
     ],
     'lt' => [
         'welcome' => 'Sveiki atvykę į Budget Buddy',

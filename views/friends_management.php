@@ -1,7 +1,7 @@
 <?php
-require_once '../controllers/auth.php';
-require_once '../models/db.php';
-require_once '../controllers/translations.php'; // Asegúrate de que este archivo existe
+require_once dirname(__DIR__) . '/controllers/auth.php';
+require_once dirname(__DIR__) . '/models/db.php';
+require_once dirname(__DIR__) . '/controllers/translations.php';
 session_start();
 requireLogin();
 

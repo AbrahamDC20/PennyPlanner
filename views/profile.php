@@ -1,8 +1,8 @@
 <?php
-require '../controllers/auth.php';
-require '../controllers/profileController.php'; // Asegúrate de que este archivo existe
-require '../controllers/aiController.php'; // Asegúrate de que este archivo existe
-require '../controllers/translations.php'; // Asegúrate de que este archivo existe
+require_once dirname(__DIR__) . '/controllers/auth.php';
+require_once dirname(__DIR__) . '/controllers/profileController.php';
+require_once dirname(__DIR__) . '/controllers/aiController.php';
+require_once dirname(__DIR__) . '/controllers/translations.php';
 session_start();
 requireLogin();
 $recommendations = generateSpendingRecommendations($_SESSION['user']['id']);
