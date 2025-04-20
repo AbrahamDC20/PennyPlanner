@@ -223,4 +223,104 @@ function notifyUserByEmail($email, $subject, $message) {
         logError("Failed to send email to $email");
     }
 }
+
+// Verificar código 2FA
+function verify2FACode($userId, $inputCode) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT 2fa_code FROM users WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+    return $result && $result['2fa_code'] === $inputCode;
+}
+
+function sendEmailNotification($email, $subject, $message) {
+    ob_start();
+    include dirname(__DIR__) . '/templates/email_template.php';
+    $htmlMessage = ob_get_clean();
+
+    $headers = "From: PennyPlanner <no-reply@pennyplanner.com>\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    mail($email, $subject, $htmlMessage, $headers);
+}
+
+function logUserActivity($userId, $activity) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO user_activity (user_id, activity) VALUES (?, ?)");
+    $stmt->bind_param("is", $userId, $activity);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function createAccountRecoveryRequest($email) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $user = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+
+    if (!$user) {
+        throw new Exception(t('email_not_found'));
+    }
+
+    $token = bin2hex(random_bytes(32));
+    $stmt = $conn->prepare("INSERT INTO account_recovery_requests (user_id, token) VALUES (?, ?)");
+    $stmt->bind_param("is", $user['id'], $token);
+    $stmt->execute();
+    $stmt->close();
+
+    $recoveryLink = "http://yourwebsite.com/Website_Technologies_Abraham/Final_Proyect/views/recover_account.php?token=$token";
+    notifyUserByEmail($email, t('recover_account'), t('click_link') . ": $recoveryLink");
+}
+
+function verifyRecoveryToken($token) {
+    global $conn;
+
+    $stmt = $conn->prepare("SELECT user_id FROM account_recovery_requests WHERE token = ?");
+    $stmt->bind_param("s", $token);
+    $stmt->execute();
+    $request = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+
+    if (!$request) {
+        throw new Exception(t('invalid_token'));
+    }
+
+    return $request['user_id'];
+}
+
+function assignRoleToUser($userId, $roleId) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO user_roles (user_id, role_id) VALUES (?, ?)");
+    $stmt->bind_param("ii", $userId, $roleId);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function checkPermission($userId, $permissionName) {
+    global $conn;
+    $stmt = $conn->prepare("
+        SELECT 1
+        FROM user_roles ur
+        JOIN role_permissions rp ON ur.role_id = rp.role_id
+        JOIN permissions p ON rp.permission_id = p.id
+        WHERE ur.user_id = ? AND p.name = ?
+    ");
+    $stmt->bind_param("is", $userId, $permissionName);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
+    return $result ? true : false;
+}
+
+function logAudit($userId, $action) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO audit_logs (user_id, action) VALUES (?, ?)");
+    $stmt->bind_param("is", $userId, $action);
+    $stmt->execute();
+    $stmt->close();
+}
 ?>

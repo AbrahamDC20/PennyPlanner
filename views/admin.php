@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
 }
 ?>
 <?php include 'header.php'; ?>
-<main style="margin: 80px auto; max-width: 1200px;"> <!-- Márgenes laterales -->
+<main style="margin: 80px auto; max-width: 1200px; padding: 0 20px;"> <!-- Márgenes laterales -->
     <div class="admin-panel">
         <h1><?php echo t('admin_panel'); ?></h1>
         <h2><?php echo t('user_management'); ?></h2>
@@ -42,6 +42,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
         </table>
         <h2><?php echo t('global_statistics'); ?></h2>
         <p><?php echo t('total_users'); ?>: <?php echo count($users); ?></p>
+        <p><?php echo t('total_transactions'); ?>: 
+            <?php
+            $stmt = $conn->prepare("SELECT COUNT(*) as total FROM transactions");
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_assoc();
+            echo $result['total'];
+            $stmt->close();
+            ?>
+        </p>
+        <div id="chart-container" style="width: 100%; height: 400px;"></div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('chart-container').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['<?= t('total_users') ?>'],
+                    datasets: [{
+                        label: '<?= t('statistics') ?>',
+                        data: [<?= count($users) ?>],
+                        backgroundColor: ['#007bff']
+                    }]
+                }
+            });
+        </script>
         <!-- Agregar más estadísticas aquí -->
     </div>
 </main>

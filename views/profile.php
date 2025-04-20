@@ -1,5 +1,6 @@
 <?php
 require '../controllers/auth.php';
+require '../controllers/profileController.php'; // Asegurarse de incluir el controlador
 session_start();
 requireLogin();
 ?>
@@ -10,10 +11,12 @@ requireLogin();
         <h2><?= t('profile') ?></h2>
         <div class="profile-header" style="display: flex; align-items: center; gap: 20px;"> <!-- Align image and name -->
             <div class="profile-image-container">
-                <img src="<?= isset($_SESSION['user']['profile_image']) ? '/Website_Technologies_Abraham/Final_Proyect/uploads/' . htmlspecialchars($_SESSION['user']['profile_image']) : '/Website_Technologies_Abraham/Final_Proyect/assets/default-profile.png' ?>" alt="<?= t('profile_image') ?>" class="profile-image" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;"> <!-- Adjusted size and rounded -->
+                <img src="<?= isset($_SESSION['user']['profile_image']) ? '/Website_Technologies_Abraham/Final_Proyect/uploads/' . htmlspecialchars($_SESSION['user']['profile_image']) : '/Website_Technologies_Abraham/Final_Proyect/assets/default-profile.png' ?>" 
+                     alt="<?= t('profile_image') ?>" 
+                     class="profile-image"> <!-- Asegurarse de usar la clase correcta -->
             </div>
             <div class="profile-username">
-                <h3 style="margin: 0;"><?= htmlspecialchars($_SESSION['user']['username']) ?></h3>
+                <?= htmlspecialchars($_SESSION['user']['username']) ?>
             </div>
         </div>
         <form method="POST" action="../routes/update_profile.php" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px;">
@@ -31,6 +34,50 @@ requireLogin();
             <p class="error"><?= htmlspecialchars($_SESSION['error']) ?></p>
             <?php unset($_SESSION['error']); ?>
         <?php endif; ?>
+        <h3><?= t('profile_changes') ?></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><?= t('field_changed') ?></th>
+                    <th><?= t('old_value') ?></th>
+                    <th><?= t('new_value') ?></th>
+                    <th><?= t('change_date') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach (getProfileChanges($_SESSION['user']['id']) as $change): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($change['field_changed']) ?></td>
+                        <td><?= htmlspecialchars($change['old_value']) ?></td>
+                        <td><?= htmlspecialchars($change['new_value']) ?></td>
+                        <td><?= htmlspecialchars($change['change_date']) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <h3><?= t('activity_history') ?></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th><?= t('activity') ?></th>
+                    <th><?= t('date') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $stmt = $conn->prepare("SELECT activity, activity_date FROM user_activity WHERE user_id = ? ORDER BY activity_date DESC");
+                $stmt->bind_param("i", $_SESSION['user']['id']);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($row['activity']) ?></td>
+                        <td><?= htmlspecialchars($row['activity_date']) ?></td>
+                    </tr>
+                <?php endwhile; ?>
+                <?php $stmt->close(); ?>
+            </tbody>
+        </table>
     </div>
 </main>
 <?php include 'footer.php'; ?>

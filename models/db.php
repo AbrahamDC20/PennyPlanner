@@ -73,6 +73,117 @@ $conn->query("
     )
 ");
 
+$conn->query("
+    CREATE TABLE IF NOT EXISTS roles (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL UNIQUE,
+        description TEXT
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS permissions (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL UNIQUE,
+        description TEXT
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS role_permissions (
+        role_id INT NOT NULL,
+        permission_id INT NOT NULL,
+        FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE,
+        FOREIGN KEY (permission_id) REFERENCES permissions(id) ON DELETE CASCADE,
+        PRIMARY KEY (role_id, permission_id)
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS user_roles (
+        user_id INT NOT NULL,
+        role_id INT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE,
+        PRIMARY KEY (user_id, role_id)
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS profile_changes (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        field_changed VARCHAR(50) NOT NULL,
+        old_value TEXT,
+        new_value TEXT,
+        change_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS audit_logs (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        action TEXT NOT NULL,
+        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS favorite_transactions (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        transaction_id INT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS friends (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        friend_id INT NOT NULL,
+        status ENUM('pending', 'accepted', 'rejected') DEFAULT 'pending',
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+        FOREIGN KEY (friend_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS account_recovery_requests (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        token VARCHAR(64) NOT NULL UNIQUE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS notifications (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        message TEXT NOT NULL,
+        type ENUM('success', 'error', 'info') DEFAULT 'info',
+        is_read BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+");
+
+$conn->query("
+    CREATE TABLE IF NOT EXISTS user_activity (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        activity VARCHAR(255) NOT NULL,
+        activity_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+");
+
 // Crear índices si no existen
 $conn->query("
     CREATE INDEX IF NOT EXISTS idx_users_username ON users(username)
@@ -89,17 +200,6 @@ $conn->query("
 $conn->query("
     CREATE INDEX IF NOT EXISTS idx_transactions_currency ON transactions(currency)
 ");
-
-// Asegurarse de que la cuenta de administrador exista (llamar explícitamente en lugar de automáticamente)
-// ensureAdminAccount();
-
-// Centralizar configuración de la base de datos
-if (!function_exists('getDBConnection')) {
-    function getDBConnection() {
-        global $conn;
-        return $conn;
-    }
-}
 
 // Validar entrada para evitar inyecciones SQL
 if (!function_exists('sanitizeInput')) {
@@ -178,4 +278,20 @@ function assignRole($userId, $role) {
     $stmt->execute();
     $stmt->close();
 }
+
+function getExchangeRate($fromCurrency, $toCurrency) {
+    // Simulación de tasas de cambio (puedes reemplazar esto con una API real)
+    $exchangeRates = [
+        'USD' => ['USD' => 1, 'EUR' => 0.85, 'GBP' => 0.75],
+        'EUR' => ['USD' => 1.18, 'EUR' => 1, 'GBP' => 0.88],
+        'GBP' => ['USD' => 1.33, 'EUR' => 1.14, 'GBP' => 1],
+    ];
+
+    if (isset($exchangeRates[$fromCurrency][$toCurrency])) {
+        return $exchangeRates[$fromCurrency][$toCurrency];
+    }
+
+    throw new Exception("Exchange rate not available for $fromCurrency to $toCurrency");
+}
+
 ?>

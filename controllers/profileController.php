@@ -31,4 +31,23 @@ function updateProfileImage($userId, $imageFile) {
         throw new Exception("No se subió ningún archivo válido.");
     }
 }
+
+function logProfileChange($userId, $field, $oldValue, $newValue) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO profile_changes (user_id, field_changed, old_value, new_value) VALUES (?, ?, ?, ?)");
+    $stmt->bind_param("isss", $userId, $field, $oldValue, $newValue);
+    $stmt->execute();
+    $stmt->close();
+}
+
+function getProfileChanges($userId) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT field_changed, old_value, new_value, change_date FROM profile_changes WHERE user_id = ? ORDER BY change_date DESC");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $changes = $result->fetch_all(MYSQLI_ASSOC);
+    $stmt->close();
+    return $changes;
+}
 ?>

@@ -17,15 +17,17 @@ if (session_status() === PHP_SESSION_NONE) {
             <input type="text" id="username" name="username" required>
             <label for="password"><?= t('password') ?>:</label>
             <input type="password" id="password" name="password" required>
+            <label for="2fa_code"><?= t('2fa_code') ?>:</label>
+            <input type="text" id="2fa_code" name="2fa_code" required>
             <?php if (isset($_SESSION['error'])): ?>
                 <p class="error"><?= htmlspecialchars($_SESSION['error']) ?></p>
                 <?php unset($_SESSION['error']); ?>
             <?php endif; ?>
             <button type="submit" style="width: 100%;"><?= t('login') ?></button> <!-- Botón ajustado -->
         </form>
-        <div style="text-align: center; margin-top: 10px;"> <!-- Centrar enlaces -->
-            <p><a href="/Website_Technologies_Abraham/Final_Proyect/views/register.php"><?= t('register') ?></a></p>
-            <p><a href="/Website_Technologies_Abraham/Final_Proyect/views/admin_login.php"><?= t('login') ?> (<?= t('admin') ?>)</a></p>
+        <div style="text-align: center; margin-top: 20px;"> <!-- Centrar enlaces -->
+            <a href="/Website_Technologies_Abraham/Final_Proyect/views/register.php" style="display: block;"><?= t('register') ?></a>
+            <a href="/Website_Technologies_Abraham/Final_Proyect/views/admin_login.php" style="display: block;"><?= t('login') ?> (<?= t('admin') ?>)</a>
         </div>
     </div>
 </main>

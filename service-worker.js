@@ -6,6 +6,9 @@ self.addEventListener('install', (event) => {
                 '/assets/styles.css',
                 '/views/index.php',
                 '/views/transactions.php',
+                '/views/profile.php',
+                '/views/settings.php',
+                '/assets/scripts.js'
             ]);
         })
     );

@@ -18,9 +18,12 @@ session_start();
                 <p class="error"><?= htmlspecialchars($_SESSION['error']) ?></p>
                 <?php unset($_SESSION['error']); ?>
             <?php endif; ?>
+            <p style="text-align: center;">Solo los administradores pueden iniciar sesión desde esta página.</p>
             <button type="submit"><?= t('login') ?></button>
         </form>
-        <p><a href="/Website_Technologies_Abraham/Final_Proyect/views/login.php"><?= t('login') ?> (<?= t('user') ?>)</a></p>
+        <div style="text-align: center; margin-top: 20px;"> <!-- Centrar enlace -->
+            <a href="/Website_Technologies_Abraham/Final_Proyect/views/login.php" style="display: block;"><?= t('login') ?> (<?= t('user') ?>)</a>
+        </div>
     </div>
 </main>
 

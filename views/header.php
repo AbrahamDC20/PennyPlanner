@@ -39,6 +39,7 @@ function renderLanguageOptions($currentLanguage) {
 <body>
     <div id="loading-indicator" style="display: none;">Loading...</div> <!-- Loading spinner -->
     <div id="notification" class="notification" style="display: none;"></div> <!-- Notification system -->
+    <div id="notification" class="notification"></div>
     <header>
         <nav>
             <ul class="menu" role="menu">
@@ -69,6 +70,9 @@ function renderLanguageOptions($currentLanguage) {
                         </form>
                     </li>
                 <?php endif; ?>
+                <li>
+                    <!-- Eliminar el botón de modo oscuro -->
+                </li>
             </ul>
         </nav>
     </header>
@@ -81,15 +85,18 @@ function renderLanguageOptions($currentLanguage) {
             const menu = document.getElementById(menuId);
             const isActive = menu.classList.contains('active');
             document.querySelectorAll('.dropdown-menu').forEach((dropdown) => {
-                dropdown.classList.remove('active');
-                dropdown.setAttribute('aria-expanded', 'false');
+                if (dropdown !== menu) {
+                    dropdown.classList.remove('active');
+                    dropdown.setAttribute('aria-expanded', 'false');
+                }
             });
             if (!isActive) {
                 menu.classList.add('active');
                 menu.setAttribute('aria-expanded', 'true');
             }
         }
-
+    </script>
+    <script>
         // Close dropdowns when clicking outside
         document.addEventListener('click', (event) => {
             const dropdowns = document.querySelectorAll('.dropdown-menu');
@@ -122,13 +129,26 @@ function renderLanguageOptions($currentLanguage) {
         function showAssistant() {
             alert('<?= t('welcome') ?>! <?= t('tutorial_home') ?>');
         }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('header').classList.toggle('dark-mode');
+            document.querySelector('footer').classList.toggle('dark-mode');
+        }
     </script>
     <script src="/Website_Technologies_Abraham/Final_Proyect/assets/socket.io.js"></script>
     <script>
         const socket = io('http://localhost:3000'); // Conexión a WebSocket
+
         socket.on('notification', (data) => {
             showNotification(data.message, data.type);
         });
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/Website_Technologies_Abraham/Final_Proyect/service-worker.js')
+                .then(() => console.log('Service Worker registered successfully.'))
+                .catch((error) => console.error('Service Worker registration failed:', error));
+        }
     </script>
 </body>
 </html>

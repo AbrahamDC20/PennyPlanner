@@ -23,3 +23,34 @@
 2025-04-20 17:27:46 - Stored hash: $2y$10$OttdsDPaH6/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.
 2025-04-20 17:27:46 - Password verification result for user Abraham: success
 2025-04-20 17:27:46 - Password verification successful for user: Abraham
+2025-04-20 18:04:35 - Failed to send email to relojero1303@gmail.com
+2025-04-20 18:04:46 - Sanitized username: Relojero1303
+2025-04-20 18:04:46 - Provided password (trimmed): Sdg_1974
+2025-04-20 18:04:46 - User found: {"id":30,"username":"Relojero1303","password_hash":"$2y$10$o0y.elLEfdpZC.Gmmg5\/Fe4LgvqbpMUSK27kJPMnjoGthWlnisr6e","first_name":"Salom\u00f3n","last_name":"D\u00edaz","email":"relojero1303@gmail.com","phone":"722683559","profile_image":null,"role":"user","created_at":"2025-04-20 19:04:33"}
+2025-04-20 18:04:46 - Stored hash: $2y$10$o0y.elLEfdpZC.Gmmg5/Fe4LgvqbpMUSK27kJPMnjoGthWlnisr6e
+2025-04-20 18:04:46 - Password verification result for user Relojero1303: success
+2025-04-20 18:04:46 - Password verification successful for user: Relojero1303
+2025-04-20 18:23:02 - Sanitized username: Relojero1303
+2025-04-20 18:23:02 - Provided password (trimmed): Sdg_1974
+2025-04-20 18:23:02 - User found: {"id":30,"username":"Relojero1303","password_hash":"$2y$10$o0y.elLEfdpZC.Gmmg5\/Fe4LgvqbpMUSK27kJPMnjoGthWlnisr6e","first_name":"Salom\u00f3n","last_name":"D\u00edaz","email":"relojero1303@gmail.com","phone":"677665935","profile_image":null,"role":"user","created_at":"2025-04-20 19:04:33"}
+2025-04-20 18:23:02 - Stored hash: $2y$10$o0y.elLEfdpZC.Gmmg5/Fe4LgvqbpMUSK27kJPMnjoGthWlnisr6e
+2025-04-20 18:23:02 - Password verification result for user Relojero1303: success
+2025-04-20 18:23:02 - Password verification successful for user: Relojero1303
+2025-04-20 18:24:02 - Sanitized username: Abraham
+2025-04-20 18:24:02 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 18:24:02 - User found: {"id":3,"username":"Abraham","password_hash":"$2y$10$OttdsDPaH6\/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":"PennyPlanner_Logo.png","role":"admin","created_at":"2025-04-20 18:04:50"}
+2025-04-20 18:24:02 - Stored hash: $2y$10$OttdsDPaH6/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.
+2025-04-20 18:24:02 - Password verification result for user Abraham: success
+2025-04-20 18:24:02 - Password verification successful for user: Abraham
+2025-04-20 18:28:17 - Sanitized username: Abraham
+2025-04-20 18:28:17 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 18:28:17 - User found: {"id":3,"username":"Abraham","password_hash":"$2y$10$OttdsDPaH6\/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":"PennyPlanner_Logo.png","role":"admin","created_at":"2025-04-20 18:04:50"}
+2025-04-20 18:28:17 - Stored hash: $2y$10$OttdsDPaH6/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.
+2025-04-20 18:28:17 - Password verification result for user Abraham: success
+2025-04-20 18:28:17 - Password verification successful for user: Abraham
+2025-04-20 18:32:25 - Sanitized username: Abraham
+2025-04-20 18:32:25 - Provided password (trimmed): 17Del12Del2004
+2025-04-20 18:32:25 - User found: {"id":3,"username":"Abraham","password_hash":"$2y$10$OttdsDPaH6\/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.","first_name":"Abraham","last_name":"D\u00edaz","email":"pennyplanner2025@gmail.com","phone":"722683559","profile_image":"PennyPlanner_Logo.png","role":"admin","created_at":"2025-04-20 18:04:50"}
+2025-04-20 18:32:25 - Stored hash: $2y$10$OttdsDPaH6/CgYTdQu3NZuTyG97vVEfCjwTpxrwJSDiRky3FM6HK.
+2025-04-20 18:32:25 - Password verification result for user Abraham: success
+2025-04-20 18:32:25 - Password verification successful for user: Abraham

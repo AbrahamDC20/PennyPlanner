@@ -18,6 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = getUser($username, $password);
 
     if ($user) {
+        $input2FACode = $_POST['2fa_code'] ?? '';
+        if (!verify2FACode($user['id'], $input2FACode)) {
+            $_SESSION['error'] = t('invalid_2fa_code');
+            header('Location: ../views/login.php');
+            exit();
+        }
         if ($user['role'] === 'admin') {
             $_SESSION['error'] = t('admin_login_only'); // Mensaje de error traducido
             header('Location: ../views/login.php');
